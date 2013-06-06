@@ -1,7 +1,7 @@
 var mainPage = Backbone.Model.extend({
     defaults: {
         appTitle: "GuessWord",
-        sideBar: {
+        mainSection: {
             match: {
                 "name": "Match",
                 "href": "index/match",
@@ -27,7 +27,7 @@ var mainPage = Backbone.Model.extend({
                 "id": "but_about"
             }
         },
-        languageBar: {
+        sideBarSection: {
             en: {
                 "name": "en",
                 "priority": 1,
