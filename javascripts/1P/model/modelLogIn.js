@@ -15,15 +15,15 @@ var logIn = Backbone.Model.extend({
         buttons: {
             logInButton: {
                 type: "submit",
-                name: "submit_button",
+                name: "submitButton",
                 value: "Enter",
-                id: "submit_button"
+                id: "submitButton"
             },
             regButton: {
                 type: "submit",
-                name: "reg_submit_button",
+                name: "regSubmitButton",
                 value: "Registration",
-                id: "reg_submit_button"
+                id: "regSubmitButton"
             }
         }
     }
