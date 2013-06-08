@@ -1,0 +1,6 @@
+<div id="regFormDiv">
+<h3>Registration</h3>
+<% for (var item in this) { %>
+	<p><%=this[item].explText%></p><input id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"></br>
+<% } %>
+</div>
