@@ -1,8 +1,17 @@
+<div id="regFormDiv">
 <h3>Custom view</h3>
 <ul>
     <% for each (var item in this) { %>
-        <%=item.explText><input class="<%item[i].className%>" id="<%= item[i].id%>" type = "text" name = "<%= item.name[i]%>" >
+    <%=item.explText><input class="<%item[i].className%>" id="<%= item[i].id%>" type="text" name="<%= item.name[i]%>" >
 	<%=<p> label[i]</p>%>
     <% } %>
 </ul>
-<script src="/javascripts/scripts/1P/regValidator.js"></script>
+
+
+
+<div id="regFormDiv">
+<h3>Registration</h3>
+<% for (var item in this) { %>
+<p><%=this[item].explText%></p><input id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"></br>
+<% } %>
+</div>
