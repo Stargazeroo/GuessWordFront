@@ -1,6 +1,6 @@
 <div class="btn-group" id="mainSection">
     <% for (var el in this) { %>
-        <a href="#<%= el%>" class="btn" id="<%= this[el].id %>"><%= this[el].name %></a>
+        <a href="<%= this[el].href %>" class="btn" id="<%= this[el].id %>"><%= this[el].name %></a>
     <% } %>
 </div>
 
