@@ -2,11 +2,7 @@
 var mainPageRouter = Backbone.Router.extend({
     routes:{
         "":             "home",
-        ":button":      "action",
-    /*  "match":        "match",
-        "training":     "training",
-        "help":         "help",
-        "about":        "about" */ //those could be needed for future
+        ":button":      "action"
     },
 
     home: function() {
