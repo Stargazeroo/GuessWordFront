@@ -1,0 +1,160 @@
+/*main styles*/
+* 	{ 
+	vertical-align: baseline; 
+	font-weight: inherit; 
+	font-family: inherit; 
+	font-style: inherit; 
+	outline: 0; 
+	padding: 0; 
+	margin: 0; 
+	text-decoration:none; 
+	line-height:1.45; 
+	list-style:none; 
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	border: 0 none; 
+	font-size: 100%; 
+}
+
+html { 
+	height:100%; 
+	background:none repeat scroll 0 0 #F4F4F4;
+}
+		
+body { 
+	width:100%; 
+	height:100%; 
+	color:#000000;
+	font:16px "ff-enzo-web",tahoma,sans-serif; 
+	background: linear-gradient(to bottom, rgba(51,57,86,1) 0%,rgba(39,43,66,1) 32%,rgba(35,38,58,1) 65%,rgba(63,76,107,1) 100%); /* W3C */
+	background: -moz-linear-gradient(top, rgba(51,57,86,1) 0%, rgba(39,43,66,1) 32%, rgba(35,38,58,1) 65%, rgba(63,76,107,1) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgba(51,57,86,1) 0%,rgba(39,43,66,1) 32%,rgba(35,38,58,1) 65%,rgba(63,76,107,1) 100%); /* Chrome10+,Safari5.1+ */
+}
+
+/*main page styles*/
+#mainSection { 
+	position:absolute; 
+	top:30%; 
+	width:15%;
+	left:0;
+	right:0;
+	margin:0 auto;
+}
+#mainSection a { 
+	padding:15px; 
+	display:block; 
+	width:100%; 
+	position:relative; 
+	font:bold 16px tahoma;
+	color:#ffffff;
+	text-transform: uppercase;
+	text-shadow: 3px 2px 1px rgba(95, 90, 134, 1);
+	border-style:none;
+	border-radius:5px;
+	background:none;
+	background-image:linear-gradient(to bottom, #494B54, #1C3368);
+	transition:background-image 300ms ease 2s; 
+}
+
+/*div#mainSection a input:hover, .rotate {
+    -moz-animation: animrotate 1s; 
+    -webkit-animation: animrotate 1s; 
+    background-image:linear-gradient(to bottom, #1C3368, #494B54);
+    background-position:0px 0px;
+    }
+    @-moz-keyframes animrotate {
+        100% {background: #28272D;-moz-transform: perspective( 200px ) rotateY( 360deg );}
+    }
+
+    @-webkit-keyframes animrotate {
+        100% {background: #28272D;-webkit-transform: perspective( 200px ) rotateY( 360deg );}
+    }*/
+.rotate {
+        -moz-animation: animrotate 2s; 
+        -webkit-animation: animrotate 2s; 
+        }
+        @-moz-keyframes animrotate {
+            100% {background: #28272D;-moz-transform: perspective( 200px ) rotateY( 360deg );}
+        }
+
+        @-webkit-keyframes animrotate {
+            100% {background: #28272D;-webkit-transform: perspective( 200px ) rotateY( 360deg );}
+        }
+.btn:hover,
+.btn:focus {
+	background-position: 0px 0px;
+}
+#sideBarSection {
+	position:absolute; 
+	top:10px; 
+	right:10px;
+}
+div#sideBarSection input {
+	color: #CCADAD;
+	font:bold 12px verdana;
+	background: -moz-linear-gradient(90deg, rgb(79, 21, 243) 15%, rgb(211, 46, 111) 65%);
+	background: -webkit-linear-gradient(90deg, rgb(79, 21, 243) 15%, rgb(211, 46, 111) 65%);
+}
+div#sideBarSection input:hover {
+	padding:5px 20px;
+	font-size:14px;
+}
+
+#btnClickSection {
+	position:absolute;
+	left:0;
+	right:0;
+	top:50px;
+	width:75%;
+	height:75%;
+	border-radius:15px;
+	margin:0 auto;
+	background:none repeat scroll 0 0 #ffffff;;
+}
+#btnClickSection h1 {
+	font:bold 25px tahoma;
+	color:black;
+	text-align:center;
+}
+
+/*registration styles*/
+#regFormDiv{
+	position: relative;
+	float: left;
+	margin: auto;
+	margin-left: 100px;
+	margin-top: 100px;
+	font-size: 16px;
+	/*position:absolute; 
+	top:30%; 
+	width:15%;
+	left:0;
+	right:0;
+	margin:0 auto;*/
+}
+#regFormDiv input{
+	position: relative;
+	float: right;
+	background-color: black;
+	color: white;
+	font-style: bold;
+	margin-left: 10px;
+	height: 24px;
+	margin-top: 0px;
+}
+#regFormDiv h3{
+	text-align: center;
+}
+#regFormDiv div{
+	width: 100%;
+	position: relative;
+	float: left;
+	margin: auto;
+	font-size: 16px
+	margin-top: 10px;
+}
+#regFormDiv div input{
+	position: relative;
+	float: right;
+	font-size: 16px
+}
