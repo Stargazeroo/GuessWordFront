@@ -16,15 +16,15 @@ To install npm package for GuessWord project :
 
 1. Open console.
 
-2. In console change directory to project's root directory.
+2. In console change directory to project's root .
 
-3. Go to %javascripts/3P
+3. Go to %javascripts/3P folder.
 
-4. Enter in console: 
+4. Write in console: 
 
 npm install guessword3p
 
-Package manager will install package whith needed scripts.
+NPM will install package whith needed scripts.
 
 
 This module will be modify.
