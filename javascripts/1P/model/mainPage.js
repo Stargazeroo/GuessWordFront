@@ -4,25 +4,25 @@ var mainPage = Backbone.Model.extend({
         mainSection: {
             match: {
                 "name": "Match",
-                "href": "index/match",
+                "href": "#match",
                 "priority": 1,
                 "id": "but_match"
             },
             training: {
                 "name": "Training",
-                "href": "index/training",
+                "href": "#training",
                 "priority": 1,
                 "id": "but_training"
             },
             help: {
                 "name": "Help",
-                "href": "index/help",
+                "href": "#help",
                 "priority": 1,
                 "id": "but_help"
             },
             about: {
                 "name": "About",
-                "href": "index/about",
+                "href": "#about",
                 "priority": 1,
                 "id": "but_about"
             }
