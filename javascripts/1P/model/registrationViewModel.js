@@ -47,6 +47,7 @@ var registrationForm = Backbone.Model.extend({
         },
         buttons: {
             registration: {
+                id: 'reg_button',
                 name: 'reg_button',// this field is for, show 
                 //user what he should type in the input field
                 value: 'Register', //is used for atribute "value" in input tag
