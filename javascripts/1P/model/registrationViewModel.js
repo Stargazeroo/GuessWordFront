@@ -2,7 +2,7 @@ var registrationForm = Backbone.Model.extend({
     defaults:{
         fields: {
             login: {
-                explText : 'Your name:', // this field is for, show 
+                explText : 'Your login:', // this field is for, show 
                 //user what he should type in the input field
                 name: 'login', //name is used for atribute "name" in input tag
                 id: 'login', //id is used for atribute "id" in input tag
