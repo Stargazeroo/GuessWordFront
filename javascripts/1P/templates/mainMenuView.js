@@ -20,4 +20,3 @@ var ListView = Backbone.View.extend({
         this.#el.append(confirmButton);
     }
 });
-var listView = new ListView();// **listView instance**: Instantiate main app view.
