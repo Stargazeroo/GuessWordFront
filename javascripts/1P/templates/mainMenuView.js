@@ -17,6 +17,6 @@ var ListView = Backbone.View.extend({
         var regForm = new EJS({url:'/javascripts/1P/templates/regPageTemplate.ejs'}).render(inputFields);
         this.$el.append(regForm);
         var confirmButton = new EJS ({url:'/javascripts/1P/templates/regPageTemplate.ejs'}) .render(buttonGet);
-        this.#el.append(confirmButton);
+        this.$el.append(confirmButton);
     }
 });
