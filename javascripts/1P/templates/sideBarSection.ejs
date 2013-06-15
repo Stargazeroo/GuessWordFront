@@ -1,5 +1,6 @@
 <div class="btn-group" id="sideBarSection">
     <% for (var el in this) { %>
-        <input type="button" class="btn" id="<%= this[el].id %>" value="<%= this[el].name %>">
+        <% var elName = $.i18n.prop(this[el].name) %>
+        <input type="button" class="btn" id="<%= this[el].id %>" value="<%= elName %>">
     <% } %>
 </div>
