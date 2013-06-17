@@ -24,7 +24,7 @@ To install npm package for GuessWord project :
 
 npm install guessword3p
 
-NPM will install package whith needed scripts.
+NPM will install package with required scripts.
 
 
 This module will be modify.
