@@ -1,0 +1,8 @@
+<% for (var item in this) { %>
+    <% if (this[item].enable =='0'){
+        confirm = 'disabled="disabled"';
+    } else {
+        confirm = '';
+    } %> 
+    <button name=<%=this[item].name%> class="btn" id=<%=this[item].id%>><%= this[item].value%></button> 
+<% } %>
