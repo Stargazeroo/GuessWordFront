@@ -1,6 +1,6 @@
 <form id="regForm" method="POST" class="navbar-form">
     <h1>Registration</h1>
     <% for (var item in this) { %>
-        <p><%=this[item].explText%><input class="span2" id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"></p>
+        <p><%=this[item].explText%><input class="span2" id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"><i class="icon-remove"></i></p>
     <% } %>
 </form>
