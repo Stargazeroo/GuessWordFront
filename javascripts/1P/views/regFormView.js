@@ -15,7 +15,7 @@ var registrationView = Backbone.View.extend({
     },
     onSubmit: function(e){
         e.preventDefault(); 
-        var representModel = new regRepresentationDBModel({
+        var representModel = new regRepresentationDataModel({
             login: this.$("#login").val(),
             email: this.$("#mail_id").val(),
             password: this.$("#pass").val(),
