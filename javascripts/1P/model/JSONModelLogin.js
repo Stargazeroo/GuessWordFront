@@ -1,6 +1,6 @@
-var usersData = Backbone.Model.extend({
-	defaults: {    
-	    userLogIn: "",
-	    userPassword: ""
-	}
+var logInDataModel = Backbone.Model.extend({
+    defaults: {    
+        userLogIn: "",
+        userPassword: ""
+    }
 });

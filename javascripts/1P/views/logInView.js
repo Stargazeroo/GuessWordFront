@@ -19,12 +19,12 @@ var logInView = Backbone.View.extend({
 
     submit: function(e){
         e.preventDefault();
-        var userInform = new usersData({
+        var userInform = new logInDataModel({
              userLogIn: this.$('#login').val(),
              userPassword: this.$('#pass').val(),
         });
         var userInformJSON = userInform.toJSON();
-//        console.log(userInformJSON);
+
         $.ajax({
             type: 'POST',
             dataType:'json',

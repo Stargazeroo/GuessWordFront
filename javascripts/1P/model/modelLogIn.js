@@ -1,4 +1,4 @@
-var logIn = Backbone.Model.extend({
+var logInModel = Backbone.Model.extend({
         defaults: {
             fields: {    
                 login: {
