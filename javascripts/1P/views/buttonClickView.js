@@ -8,12 +8,8 @@ var buttonClickView = Backbone.View.extend({
     },
     
     render: function(btn) {
-        this.$el.find('*').not('#sideBarSection').empty(); // delets all elements from 'body' element except the language selection
+        this.$el.empty(); // delets all elements from 'body'
         var btnClickTemplate = new EJS({url:'/javascripts/1P/templates/buttonClick.ejs'}).render(btn);
         this.$el.append(btnClickTemplate);
     }
 });
-
-
-
-

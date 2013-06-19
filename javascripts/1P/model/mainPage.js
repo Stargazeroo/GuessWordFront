@@ -3,25 +3,25 @@ var mainPage = Backbone.Model.extend({
         appTitle: "GuessWord",
         mainSection: {
             match: {
-                "name": "Match",
+                "name": "app_match", // app property for localization
                 "href": "#match",
                 "priority": 1,
                 "id": "but_match"
             },
             training: {
-                "name": "Training",
+                "name": "app_training",
                 "href": "#training",
                 "priority": 1,
                 "id": "but_training"
             },
             help: {
-                "name": "Help",
+                "name": "app_help",
                 "href": "#help",
                 "priority": 1,
                 "id": "but_help"
             },
             about: {
-                "name": "About",
+                "name": "app_about",
                 "href": "#about",
                 "priority": 1,
                 "id": "but_about"
@@ -29,19 +29,19 @@ var mainPage = Backbone.Model.extend({
         },
         sideBarSection: {
             en: {
-                "name": "en",
+                "name": "app_en",
                 "priority": 1,
-                "id": "lan_en"
+                "id": "en_EN"
             },
             ua: {
-                "name": "ua",
+                "name": "app_ua",
                 "priority": 1,
-                "id": "lan_ua"
+                "id": "ua_UA"
             },
             ru: {
-                "name": "ru",
+                "name": "app_ru",
                 "priority": 1,
-                "id": "lan_ru"
+                "id": "ru_RU"
             }
         },
     }
