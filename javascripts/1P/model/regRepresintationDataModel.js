@@ -1,4 +1,4 @@
-var regRepresentationDBModel = Backbone.Model.extend({
+var regRepresentationDataModel = Backbone.Model.extend({
     defaults: {
         login: "",
         email: "",
