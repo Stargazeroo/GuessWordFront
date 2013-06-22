@@ -1,6 +1,10 @@
 <form id="regForm" method="POST" class="navbar-form">
-    <h1>Registration</h1>
+    <h1><%=$.i18n.prop("app_registration")%></h1>
     <% for (var item in this) { %>
-        <p><%=this[item].explText%><input class="span2" id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"><i class="icon-remove"></i></p>
+        <% var elName = $.i18n.prop(this[item].explText) %>
+        <p><%=elName%><input class="span2" id="<%=this[item].id%>" type="<%=this[item].type%>" name="<%=this[item].name%>"><i class="icon-remove"></i>
+        <% if ((this[item].id == 'login') || (this[item].id == 'mail_id') || (this[item].id == 'repass_id')){%>
+        <i class="icon-remove"></i><i class="icon-ok"></i>
+        <%}%></p>
     <% } %>
 </form>

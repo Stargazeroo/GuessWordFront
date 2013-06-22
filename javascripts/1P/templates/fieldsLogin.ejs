@@ -1,0 +1,6 @@
+<form id="logInForm" method="POST">
+    <h1>Sign in</h1>
+    <% for (var item in this) { %>
+         <p><%=this[item].label%><input id="<%= this[item].id%>" type="<%= this[item].type%>" name="<%= this[item].name%>" class="span2"></p>
+    <% } %>
+</form>
