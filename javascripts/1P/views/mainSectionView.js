@@ -24,13 +24,13 @@ var mainSectionView = Backbone.View.extend({
     events: {
         "mouseover #mainSection a": "hoverOn",
         "mouseout #mainSection a" : "hoverOff",
-	    "mouseover #mainSectionBack" : "hoverOnBack",
+        "mouseover #mainSectionBack" : "hoverOnBack",
         "mouseout #mainSectionBack" : "hoverOffBack",
     },
 
     hoverOn: function(e) {
         var el = e;
-        var color = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+        var color = 'rgb(' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ')';
         $(e.currentTarget).addClass('rotate').css("background", color);
             
     },
@@ -81,10 +81,4 @@ function mainSectionBackAnim() {
             $('#mainSectionBack').attr("style","-" + cssPrefix + "-transform:rotate(" + degrees + "deg)");
         },20);
     }
-    // $("#mainSection").mouseover(function(){
-    //     speed = 1;    
-    // });
-    // $("#mainSection").mouseout(function(){
-    //     speed = 0.3;    
-    // });
 }
