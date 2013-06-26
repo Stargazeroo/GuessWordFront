@@ -1,6 +1,6 @@
 // **buttonClickView instance**: Instantiate main app view.
 var buttonClickView = Backbone.View.extend({
-    el: $('body'),
+    el: $('#contentBlock'),
 
     initialize: function(btn) {
         _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods

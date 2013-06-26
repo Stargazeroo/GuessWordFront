@@ -19,6 +19,10 @@ var mainPageRouter = Backbone.Router.extend({
     registration: function() {
         new regViewController();
     },
+
+    login: function() {
+        new logInController();
+    }
 });
 
 $(document).ready(function() {

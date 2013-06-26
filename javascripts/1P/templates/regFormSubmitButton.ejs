@@ -4,5 +4,6 @@
     } else {
         confirm = '';
     } %> 
-    <button name=<%=this[item].name%> class="btn" id=<%=this[item].id%>><%= this[item].value%></button> 
+    <% var elName = $.i18n.prop(this[item].value) %>
+    <button name=<%=this[item].name%> class="btn" <%=confirm%> id=<%=this[item].id%>><%= elName%></button> 
 <% } %>

@@ -1,8 +1,8 @@
-<h1><%=$.i18n.prop("app_guessword")%></h1>
 <div class="btn-group" id="mainSection">
     <% for (var el in this) { %>
         <% var elName = $.i18n.prop(this[el].name) %>
         <a href="<%= this[el].href %>" class="btn" id="<%= this[el].id %>"><%= elName %></a>
     <% } %>
+    <div id="mainSectionBack"></div>
 </div>
 
