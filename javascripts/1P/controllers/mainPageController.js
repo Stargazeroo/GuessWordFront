@@ -4,8 +4,10 @@ var mainPageController = Backbone.Model.extend({
         var mainPageModel = new mainPage(); //getting data from mainPage model
         var mainSection = mainPageModel.get('mainSection');
         var sideBarSection = mainPageModel.get('sideBarSection');
-        
-        new mainSectionView(mainSection, sideBarSection);
-        new sideBarSectionView(mainSection, sideBarSection);
+        var logoutButton = mainPageModel.get('logoutButton');
+
+        new sideBarSectionView(sideBarSection);
+        new mainSectionView(mainSection);
+        new userView();
     }
 });

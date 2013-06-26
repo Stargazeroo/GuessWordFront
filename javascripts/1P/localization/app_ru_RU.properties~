@@ -1,0 +1,29 @@
+# Main page properties
+app_guessword = Угадай слово
+app_match = Матч
+app_training = Обучение
+app_help = Помощь
+app_about = О программе
+
+app_en = англ
+app_ua = укр
+app_ru = рус
+
+# Registration page properties
+app_registration = Регистрация
+app_login = Логин:
+app_email = Электронная почта:
+app_enter_password = Введите пароль:
+app_repeat_password = Повторите пароль:
+app_birth_date = День рождения:
+app_address = Адрес:
+app_register = Регистрация
+
+# LogIn page properties
+app_login = Логин:
+app_password = Пароль:
+app_enter = Войти
+app_registration = Регистрация
+app_welcome = Приветствуем
+app_to = в игре
+app_sign_in = Вход

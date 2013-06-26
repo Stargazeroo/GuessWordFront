@@ -1,14 +1,14 @@
 // **mainPageView instance**: Instantiate main app view.
 var sideBarSectionView = Backbone.View.extend({
-    el: $('body'),
+    el: $('#language'),
 
-    initialize: function(mainSection, sideBarSection){
+    initialize: function(sideBarSection){
         _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
-        this.render(mainSection, sideBarSection);
+        this.render(sideBarSection);
     },
 
     events: {
-        "click #sideBarSection": "changeLan"
+        "click #sideBarSection": "changeLan",
     },
 
     changeLan: function(event) {
@@ -23,10 +23,21 @@ var sideBarSectionView = Backbone.View.extend({
         this.start();
     },
 
-    render: function(mainSection, sideBarSection){
+    render: function(sideBarSection){
         this.$el.unbind(); //helps to avoid zombie views
         var sideBarSectionTemplate = new EJS({url:'/javascripts/1P/templates/sideBarSection.ejs'}).render(sideBarSection);
-        this.$el.append(sideBarSectionTemplate);
+        jQuery.fn.exists = function() {
+           return $(this).length;
+        }
+        if ((this.$el.children("#sideBarSection")).exists()){
+            console.log("exist");
+            //this.$el.append(sideBarSectionTemplate);
+        }
+        else {
+            console.log("Notexist");
+            this.$el.append(sideBarSectionTemplate);
+        }
+        sideBarSectionLoad();
     },
 
     close: function () {
@@ -38,4 +49,9 @@ var sideBarSectionView = Backbone.View.extend({
         this.close(); //closes a zombie view
         Backbone.history.loadUrl(Backbone.history.getFragment())
     }
+
 });
+function sideBarSectionLoad() {
+    $("#sideBarSection").css("display", "none");
+    $("#sideBarSection").fadeIn(2000);
+}

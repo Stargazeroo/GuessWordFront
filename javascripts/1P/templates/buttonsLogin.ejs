@@ -1,3 +1,4 @@
 <% for (var item in this) { %>
-    <button id="<%= this[item].id%>" type="<%= this[item].type%>" name="<%= this[item].name%>"><%=this[item].value%></button></br>
+    <% var elName = $.i18n.prop(this[item].value) %>
+    <button id="<%= this[item].id%>" type="<%= this[item].type%>" name="<%= this[item].name%>"><%= elName%></button>
 <% } %>

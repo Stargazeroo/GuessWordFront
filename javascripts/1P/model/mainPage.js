@@ -44,5 +44,10 @@ var mainPage = Backbone.Model.extend({
                 "id": "ru_RU"
             }
         },
+        logoutButton: {
+            "name": "app_logout",
+            "href": "#login",
+            "id": "but_logout"
+        }
     }
 });
