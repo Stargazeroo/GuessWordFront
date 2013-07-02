@@ -1,10 +1,10 @@
-// **mainPageView instance**: Instantiate main app view.
+// **userView instance**: Information about the user.
 var userView = Backbone.View.extend({
     el: $('#userBlock'),
 
     events: {
-        "click #logoutButton" : "logout",
-        "mouseover #logoutButton" : "logPopout",
+        "click #logoutButton"    : "logout",
+        "mouseover #logoutButton": "logPopout",
         "mouseout #logoutButton" : "logPopoutOff"
     },
 
@@ -14,21 +14,23 @@ var userView = Backbone.View.extend({
     },
 
     render: function(){
-        if (!$.cookie("login")){
+        if (!($.cookie("login"))){
             window.location.href = "http://guessword.com/#login";
-        }else{    
+        }else{   
+            this.$el.empty(); 
             this.$el.unbind();
             var data = JSON.parse($.cookie('login'));
-            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(data);
+            var dataModel = new userModel();
+            dataModel.set(data);
+            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(dataModel.attributes);
             jQuery.fn.exists = function() {
                 return $(this).length;
             }
-            if ((this.$el.children("#userSection")).exists()){
-                console.log("exists");
-            } else {
+            if (!(this.$el.children("#userSection")).exists()){
                 this.$el.append(userTemplate);
             }
         }
+        accordion();
     },
 
     logout: function() {
@@ -41,7 +43,7 @@ var userView = Backbone.View.extend({
 
     logPopout: function() {
         $('#logoutButton').tooltip({
-            'title': 'Logout',
+            'title'    : 'Logout',
             'placement': 'bottom'
             });
         $('#logoutButton').tooltip('show')
@@ -51,3 +53,19 @@ var userView = Backbone.View.extend({
         $('#logoutButton').tooltip('hide')
     }
 });
+
+function accordion() {
+    $("#accordion").accordion({
+        autoHeight: false,
+        collapsible: true,
+        active: url(),
+        icons: { "header": "defaultIcon", "activeHeader": "selectedIcon" } 
+    });
+    function url() {
+        if (window.location.href === "http://guessword.com/#training") {
+            return 1
+        } else {
+            return 0
+        }
+    }
+}

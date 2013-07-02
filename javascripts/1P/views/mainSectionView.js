@@ -8,11 +8,9 @@ var mainSectionView = Backbone.View.extend({
     },
 
     render: function(mainSection){
-        if (!$.cookie("login")){
+        if (!($.cookie("login"))){
             window.location.href = "http://guessword.com/#login";
         }else{
-            var data = JSON.parse($.cookie('login'));
-            console.log(data.login)
             this.$el.empty();  // delets all elements from 'body' element
             var mainSectionTemplate = new EJS({url:'/javascripts/1P/templates/mainSection.ejs'}).render(mainSection);
             this.$el.append(mainSectionTemplate);
