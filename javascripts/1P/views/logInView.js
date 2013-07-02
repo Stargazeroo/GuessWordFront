@@ -2,13 +2,16 @@ var logInView = Backbone.View.extend({
     el: $('#contentBlock'),
     events: {
         "click #submitButton" : "submit",
-        "click #regSubmitButton" : "loadRegPage"
+        "click #regSubmitButton" : "loadRegPage",
+        "click #signInFacebook" : "facebookEnter"
     },
+
+
     initialize: function(logInFields,logInButtons){
         _.bindAll(this, 'render', 'submit',"loadRegPage");
         this.render(logInFields, logInButtons);
     },
-    
+  
     render: function(logInFields,logInButtons){
         if ($.cookie("login")){
             window.location.href = "http://guessword.com/";
@@ -20,6 +23,48 @@ var logInView = Backbone.View.extend({
             this.$("#logInForm").append(buttons);
 	    loginPageLoad();
         }
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '531893653536303',
+                channelUrl: 'http://www.guessword.com/channel.html', 
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
+            
+
+            FB.login(function(response) {
+                if (response.status === "connected") {   
+                    FB.api('/me', function(response) {
+                        var facebookLogin = response.first_name;
+                        var facebookID = response.id;
+                        var facebookLocale = response.locale;
+                        var facebookEmail = response.email;
+
+                        var facebookBirthday = response.birthday;
+                        var regVBirthday = /\//g;
+                        var modifyFacebookBirthday = facebookBirthday.replace(regVBirthday,"-");
+                        var year = modifyFacebookBirthday.slice(6);
+                        var month = modifyFacebookBirthday.slice(0,2);
+                        var day = modifyFacebookBirthday.slice(3,5);
+                        var resultB = year + '-' + month + '-' + day;
+                        
+                        $('#signInFacebook').hide();
+                    });
+               }
+            }, {scope: 'user_birthday,email'});  ±±
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $('body').append('<fb:login-button show-faces="false" width="200" max-rows="1" id="signInFacebook">Sign in</fb:login-button>')
     },
 
     submit: function(e){
@@ -53,7 +98,38 @@ var logInView = Backbone.View.extend({
     loadRegPage: function(e){        
         e.preventDefault();
         window.location.href = "http://guessword.com/#registration";
-    }
+    },
+/*
+    facebookEnter: function() {
+        //FB.Event.subscribe('auth.authResponseChange', function(response) {
+        FB.login(function(response) {
+            if (response.status === "connected") {   
+                FB.api('/me', function(response) {
+                    var facebookLogin = response.first_name;
+                    var facebookID = response.id;
+                    var facebookLocale = response.locale;
+                    var facebookEmail = response.email;
+
+                    var facebookBirthday = response.birthday;
+                    var regVBirthday = /\//g;
+                    var modifyFacebookBirthday = facebookBirthday.replace(regVBirthday,"-");
+                    var year = modifyFacebookBirthday.slice(6);
+                    var month = modifyFacebookBirthday.slice(0,2);
+                    var day = modifyFacebookBirthday.slice(3,5);
+                    var resultB = year + '-' + month + '-' + day;
+                    
+                    $('#signInFacebook').hide();
+                    $('body').append(resultB);
+
+                });
+               
+            }
+        }, {scope: 'user_birthday,email'});  
+
+    //});
+    },
+
+*/    
     
 });
 function loginPageLoad() {
@@ -61,15 +137,3 @@ function loginPageLoad() {
     $("#logInForm").fadeIn(8000);
     $("#welcomeWords  h2").lettering('words').children("span").lettering().children("span").lettering();
 }
-/*
-function getCookie(key) {  
-   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');  
-   return keyValue ? keyValue[2] : null;  
-   }
-
-function setCookie(key, value) {  
-   var expires = new Date();  
-   expires.setTime(expires.getTime() + 31536000000); //1 year  
-   document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();  
-   }  
-   */
