@@ -12,11 +12,12 @@
         </div>
         <h4><%=$.i18n.prop(this.trainingResults)%></h4>
         <div>
-            <% var els =  ["app_trainings", "app_trainingTime", "app_wordsCorrect", "app_wordsIncorrect", "app_totalScore", "app_ratio"]%>
+            <% var els =  ["app_trainings", "app_trainingTime", "app_wordsCorrect", "app_wordsIncorrect", "app_totalScore"]%>
             <% for (var num = 0;  num < els.length; num++) { %>
                 <% if (!this.training[els[num]]) {this.training[els[num]] = 0}%>
                 <p><%= $.i18n.prop(els[num])%><span><%=this.training[els[num]]%></span></p>
             <% } %>
+            <p><%= $.i18n.prop("app_ratio")%><span><%=this.training["app_ratio"].toFixed(2)%></span></p>
         </div>
         <h4><%=$.i18n.prop(this.matchResults)%></h4>
         <div>
