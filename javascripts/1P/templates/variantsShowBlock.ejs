@@ -1,0 +1,7 @@
+<div id="variantsShowBlock">
+    <%for (item in this) {%>
+        <div class="variantButtonContainer">
+            <button value="<%=item%>" class="translateVariants"><%=item%>(<%=this[item]%>)</button>
+        </div>
+    <%}%>
+</div>
