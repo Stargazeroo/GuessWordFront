@@ -1,6 +1,25 @@
 <div id="userSection">
-    <span><%=this.login%></span>
-    <span><%=this.email%></span>
-    <% var elName = $.i18n.prop("app_logout") %>
-    <button id="logoutButton" class="btn"><%= elName %></button>
+    <div id="accordion">
+        <h4>
+            <%=this.main.login%>
+            <% var elName = $.i18n.prop("app_logout") %>
+            <button id="logoutButton" class="btn"><%= elName %></button>
+        </h4>
+        <div>
+            <p><a><%=this.main.email%></a></p>
+            <p><%=$.i18n.prop(this.userAge)%><span><%=this.main.age%></span></p>
+            <p><%=$.i18n.prop(this.userLocation)%><span><%=this.main.location%></span></p>
+        </div>
+        <h4><%=$.i18n.prop(this.trainingResults)%></h4>
+        <div>
+            <% var els =  ["app_trainings", "app_trainingTime", "app_wordsCorrect", "app_wordsIncorrect", "app_totalScore", "app_ratio"]%>
+            <% for (var num = 0;  num < els.length; num++) { %>
+                <% if (!this.training[els[num]]) {this.training[els[num]] = 0}%>
+                <p><%= $.i18n.prop(els[num])%><span><%=this.training[els[num]]%></span></p>
+            <% } %>
+        </div>
+        <h4><%=$.i18n.prop(this.matchResults)%></h4>
+        <div>
+        </div>
+    </div>
 </div>
