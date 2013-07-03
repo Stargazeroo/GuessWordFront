@@ -5,29 +5,29 @@ var registrationView = Backbone.View.extend({
         "focus #mail_id " : "validMail",
         "focus #login " : "validLogin",
         "focus #repass_id" : "validPass",
-    },    
-    initialize: function(regModelInputFields, regModelButtons){        
+    },
+    initialize: function(regModelInputFields, regModelButtons){
         _.bindAll(this, 'render', 'onSubmit','validMail', 'validLogin', 'validPass');
         this.render(regModelInputFields, regModelButtons);
     },
-    render: function(regModelInputFields, regModelButtons){ 
-        this.$el.unbind();  
+    render: function(regModelInputFields, regModelButtons){
+        this.$el.unbind();
         this.$el.empty();
         var regForm = new EJS({url:'/javascripts/1P/templates/regFormInputsList.ejs'}).render(regModelInputFields);
         this.$el.append(regForm);
         var confirmButton = new EJS ({url:'/javascripts/1P/templates/regFormSubmitButton.ejs'}) .render(regModelButtons);
-        this.$('#regForm').append(confirmButton);   
-	regPageLoad();
+        this.$('#regForm').append(confirmButton);
+regPageLoad();
     },
     onSubmit: function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var representModel = new regRepresentationDataModel({
             login: this.$("#login").val(),
             email: this.$("#mail_id").val(),
             password: this.$("#pass").val(),
             dob: this.$("#dob_id").val(),
             location: this.$("#location_id").val()
-        });   
+        });
         $.ajax({
             type: "POST",
             url: "http://localhost:5000/registration/index",
@@ -35,10 +35,10 @@ var registrationView = Backbone.View.extend({
             data: representModel.toJSON(),
             success: function(data){
                 console.log(data)
-                if (data.ANSWER == "success"){
+                if (data.ANSWER == "1"){
                     alert("Registration was successful");
                     window.location.href = "http://guessword.com";
-                }else{                    
+                }else{
                     alert("There are some problems")
                 }
             },
@@ -56,16 +56,15 @@ var registrationView = Backbone.View.extend({
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
                 stopMail = 0;
-            }            
+            }
             _isStop(stopPass,stopLogin,stopMail)
         })
-    },    
+    },
     validLogin: function(){
         $("#login").keyup(function(){
             var login = $(this).val();
             if (!_isValidLogin(login)){
                 $(this).siblings("i.icon-remove").css('display','inline-block').siblings("i.icon-ok").css('display','none');
-                //console.log('ololo');
                 stopLogin = 1;
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
