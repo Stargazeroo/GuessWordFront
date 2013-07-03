@@ -57,19 +57,20 @@ var logInView = Backbone.View.extend({
     
 });
 function loginPageLoad() {
-    $("#logInForm").css("display", "none");
-    $("#logInForm").fadeIn(8000);
+    $("body").css("display", "none");
+    $("body").fadeIn(100);
+    $("#logInForm").fadeIn(4000);
     $("#welcomeWords  h2").lettering('words').children("span").lettering().children("span").lettering();
-}
-/*
-function getCookie(key) {  
-   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');  
-   return keyValue ? keyValue[2] : null;  
-   }
+    $('#logInForm input').css({
+        "background": "linear-gradient(to bottom, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%)",
+        "width": "170px"
+    });
+    $('#submitButton').css({
+        "width" : "100%",
+        "padding" : "2px 0px",
+        "letter-spacing":"2px",
+        "font-weight" : "bold",
+        "margin-top" : "2px"
+    });
 
-function setCookie(key, value) {  
-   var expires = new Date();  
-   expires.setTime(expires.getTime() + 31536000000); //1 year  
-   document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();  
-   }  
-   */
+}

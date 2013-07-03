@@ -116,4 +116,13 @@ function _isStop(stopPass,stopLogin,stopMail) {
 function regPageLoad() {
     $("#regForm").css("display", "none");
     $("#regForm").fadeIn(2000);
-}
+    $('#regForm input').css({
+        "background": "linear-gradient(to bottom, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%)",
+        "width": "200px"
+    });
+    $('#reg_button').css({
+        "width" : "100%",
+        "padding" : "5px 0px",
+        "margin-top" : "5px"
+    });
+};

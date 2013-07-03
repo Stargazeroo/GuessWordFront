@@ -5,6 +5,7 @@ var mainPageRouter = Backbone.Router.extend({
         ""            : "home",
         "registration": "registration",
         "login"       : "login",
+        "training"    : "training",
         ":button"     : "action",
     },
 
@@ -22,6 +23,10 @@ var mainPageRouter = Backbone.Router.extend({
 
     login: function() {
         new logInController();
+    },
+    
+    training: function() {
+        new trainingStartPageController();
     }
 });
 

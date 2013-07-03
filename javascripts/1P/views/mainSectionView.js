@@ -22,8 +22,7 @@ var mainSectionView = Backbone.View.extend({
     events: {
         "mouseover #mainSection a": "hoverOn",
         "mouseout #mainSection a" : "hoverOff",
-        "mouseover #mainSectionBack" : "hoverOnBack",
-        "mouseout #mainSectionBack" : "hoverOffBack",
+        "click #mainSection a" : "clickFunc",
     },
 
     hoverOn: function(e) {
@@ -36,13 +35,15 @@ var mainSectionView = Backbone.View.extend({
     hoverOff: function(e) {
         $(e.currentTarget).removeClass('rotate').css("background", color);
     },
-    hoverOnBack: function(e) {
-        speed = 1;
-    },
-
-    hoverOffBack: function(e) {
-        speed = 0.3;
-    },
+    
+    clickFunc: function(e) {
+        e.preventDefault();
+        this.undelegateEvents();
+        $("#mainSection a").not(e.currentTarget).addClass('clickAnim');
+        $("#mainSection a").bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(){
+            window.location.href = $(e.currentTarget).attr('href');
+        });
+    }
 });
 
 function _getBrowserCssPrefix() {
