@@ -11,7 +11,7 @@ var logInView = Backbone.View.extend({
     
     render: function(logInFields,logInButtons){
         if ($.cookie("login")){
-            window.location.href = "http://guessword.com/";
+            window.location.href = "http://guessword.com";
         }else{
             this.$el.empty();
             var fields = new EJS({url:'/javascripts/1P/templates/fieldsLogin.ejs'}).render(logInFields);
@@ -25,8 +25,8 @@ var logInView = Backbone.View.extend({
     submit: function(e){
         e.preventDefault();
         var userInform = new logInModel({
-             userLogIn: this.$('#login').val(),
-             userPassword: this.$('#pass').val(),
+            userLogIn: this.$('#login').val(),
+            userPassword: this.$('#pass').val(),
         });
         var userInformJSON = userInform.toJSON();
         $.ajax({
@@ -34,10 +34,10 @@ var logInView = Backbone.View.extend({
             dataType:'json',
             url: "http://localhost:5000/login/index",
             data: userInformJSON,
-            success: function(data, status, ourcookie){
-                console.log(ourcookie.getResponseHeader('Set-Cookie'));
-                if (!jQuery.isEmptyObject(data)){                    
-                    $.cookie('login', JSON.stringify(data));
+            success: function(data, status){
+                if (!jQuery.isEmptyObject(data)){ 
+                    localStorage.setItem('main', JSON.stringify(data)); //adding main info about the user to localstorage
+                    $.cookie('login', JSON.parse(localStorage['main']).login);
                     window.location.href = "http://guessword.com/";
                 }else{
                     alert("No such user");
@@ -61,15 +61,3 @@ function loginPageLoad() {
     $("#logInForm").fadeIn(8000);
     $("#welcomeWords  h2").lettering('words').children("span").lettering().children("span").lettering();
 }
-/*
-function getCookie(key) {  
-   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');  
-   return keyValue ? keyValue[2] : null;  
-   }
-
-function setCookie(key, value) {  
-   var expires = new Date();  
-   expires.setTime(expires.getTime() + 31536000000); //1 year  
-   document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();  
-   }  
-   */
