@@ -1,0 +1,8 @@
+<h4><%=$.i18n.prop(this.trainingResults)%></h4>
+<div>
+    <% for (attr in this.trainingAttributes) { %>
+        <% if (!this.training[attr]) {this.training[attr] = 0}%>
+        <% if (attr === "ratio") {this.training[attr] = this.training[attr].toFixed(2)} %>
+        <p><%= $.i18n.prop(this.trainingAttributes[attr])%><span><%=this.training[attr]%></span></p>
+    <% } %>
+</div>

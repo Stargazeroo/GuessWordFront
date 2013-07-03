@@ -19,18 +19,16 @@ var userView = Backbone.View.extend({
         }else{   
             this.$el.empty(); 
             this.$el.unbind();
-            var data = JSON.parse($.cookie('login'));
-            var dataModel = new userModel();
-            dataModel.set(data);
-            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(dataModel.attributes);
-            jQuery.fn.exists = function() {
-                return $(this).length;
-            }
-            if (!(this.$el.children("#userSection")).exists()){
+            var userData = new userModel();
+            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
+
+            if (!(this.$el.children("#userSection")).length){
                 this.$el.append(userTemplate);
             }
         }
-        accordion();
+        if (window.location.href != "http://guessword.com/#training"){
+            accordion();
+        }
     },
 
     logout: function() {
@@ -45,7 +43,7 @@ var userView = Backbone.View.extend({
         $('#logoutButton').tooltip({
             'title'    : 'Logout',
             'placement': 'bottom'
-            });
+        });
         $('#logoutButton').tooltip('show')
     },
     
