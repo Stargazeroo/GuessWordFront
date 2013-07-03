@@ -53,7 +53,7 @@ var logInView = Backbone.View.extend({
                         $('#signInFacebook').hide();
                     });
                }
-            }, {scope: 'user_birthday,email'});  ±±
+            }, {scope: 'user_birthday,email'}); 
         };
 
         (function(d, s, id){
@@ -99,37 +99,7 @@ var logInView = Backbone.View.extend({
         e.preventDefault();
         window.location.href = "http://guessword.com/#registration";
     },
-/*
-    facebookEnter: function() {
-        //FB.Event.subscribe('auth.authResponseChange', function(response) {
-        FB.login(function(response) {
-            if (response.status === "connected") {   
-                FB.api('/me', function(response) {
-                    var facebookLogin = response.first_name;
-                    var facebookID = response.id;
-                    var facebookLocale = response.locale;
-                    var facebookEmail = response.email;
-
-                    var facebookBirthday = response.birthday;
-                    var regVBirthday = /\//g;
-                    var modifyFacebookBirthday = facebookBirthday.replace(regVBirthday,"-");
-                    var year = modifyFacebookBirthday.slice(6);
-                    var month = modifyFacebookBirthday.slice(0,2);
-                    var day = modifyFacebookBirthday.slice(3,5);
-                    var resultB = year + '-' + month + '-' + day;
-                    
-                    $('#signInFacebook').hide();
-                    $('body').append(resultB);
-
-                });
-               
-            }
-        }, {scope: 'user_birthday,email'});  
-
-    //});
-    },
-
-*/    
+  
     
 });
 function loginPageLoad() {
