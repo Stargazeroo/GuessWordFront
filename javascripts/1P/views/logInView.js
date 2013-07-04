@@ -3,7 +3,8 @@ var logInView = Backbone.View.extend({
     events: {
         "click #submitButton" : "submit",
         "click #regSubmitButton" : "loadRegPage",
-        "click #signInFacebook" : "facebookEnter"
+        "click #facebook" : "facebook",
+        "click #test" : "testPOPUP"
     },
 
 
@@ -13,17 +14,6 @@ var logInView = Backbone.View.extend({
     },
   
     render: function(logInFields,logInButtons){
-        if ($.cookie("login")){
-            window.location.href = "http://guessword.com/";
-        }else{
-            this.$el.empty();
-            var fields = new EJS({url:'/javascripts/1P/templates/fieldsLogin.ejs'}).render(logInFields);
-            this.$el.append(fields);
-            var buttons = new EJS({url:'/javascripts/1P/templates/buttonsLogin.ejs'}).render(logInButtons);
-            this.$("#logInForm").append(buttons);
-	    loginPageLoad();
-        }
-
         window.fbAsyncInit = function() {
             FB.init({
                 appId: '531893653536303',
@@ -31,29 +21,7 @@ var logInView = Backbone.View.extend({
                 status: true,
                 cookie: true,
                 xfbml: true
-            });
-            
-
-            FB.login(function(response) {
-                if (response.status === "connected") {   
-                    FB.api('/me', function(response) {
-                        var facebookLogin = response.first_name;
-                        var facebookID = response.id;
-                        var facebookLocale = response.locale;
-                        var facebookEmail = response.email;
-
-                        var facebookBirthday = response.birthday;
-                        var regVBirthday = /\//g;
-                        var modifyFacebookBirthday = facebookBirthday.replace(regVBirthday,"-");
-                        var year = modifyFacebookBirthday.slice(6);
-                        var month = modifyFacebookBirthday.slice(0,2);
-                        var day = modifyFacebookBirthday.slice(3,5);
-                        var resultB = year + '-' + month + '-' + day;
-                        
-                        $('#signInFacebook').hide();
-                    });
-               }
-            }, {scope: 'user_birthday,email'}); 
+            });         
         };
 
         (function(d, s, id){
@@ -63,8 +31,72 @@ var logInView = Backbone.View.extend({
                 js.src = "//connect.facebook.net/en_US/all.js";
                 fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+        if ($.cookie("login")){
+            window.location.href = "http://guessword.com/";
+        }else{
+            this.$el.empty();
+            var fields = new EJS({url:'/javascripts/1P/templates/fieldsLogin.ejs'}).render(logInFields);
+            this.$el.append(fields);
+            var buttons = new EJS({url:'/javascripts/1P/templates/buttonsLogin.ejs'}).render(logInButtons);
+            this.$("#logInForm").append(buttons);
+	    loginPageLoad();
+        $('body').append('<div id="fb-root"></div>')
+        //$('body').append('<fb:login-button show-faces="false" width="200" max-rows="1" id="signInFacebook">Sign in</fb:login-button>')
 
-        $('body').append('<fb:login-button show-faces="false" width="200" max-rows="1" id="signInFacebook">Sign in</fb:login-button>')
+
+        }
+
+
+    },
+    facebook: function(e){
+        e.preventDefault();
+        FB.login(function(response) {
+            if (response.status === "connected") {   
+                FB.api('/me', function(response) {
+                    var userAPIJson = ({
+                        "facebookLogin":"response.login",
+                        "facebookID" : "response.id",
+                        "facebookLocale" : "response.locale",
+                        "facebookEmail" : "response.email",
+                        "facebookBirthday" : "resultB"
+                    });
+
+                    var facebookBirthday = response.birthday;
+                    var year = facebookBirthday.slice(6);
+                    var month = facebookBirthday.slice(0,2);
+                    var day = facebookBirthday.slice(3,5);
+                    var resultB = year + '-' + month + '-' + day;
+                    console.log("Fuck Yeah");                    
+                    console.log(resultB);
+                    
+                    
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: "http://localhost:5000/login/index",
+                        data: userAPIJson,
+                        success: function(data,status,ourcookie){
+                            console.log(ourcookie.getResponseHeader('Set-Cookie'));
+                            if (!jQuery.isEmptyObject(data)){                    
+                                $.cookie('login', JSON.stringify(data));
+                                window.location.href = "http://guessword.com/";
+                            }
+                        },
+                        error: function(data, status){
+                            console.log(status)
+                        }
+                    })
+                    
+                });            
+           }
+           else{
+            console.log("No");
+           }
+        }, {scope: 'user_birthday,email'});
+    },
+
+    testPOPUP: function(e){
+        e.preventDefault();
     },
 
     submit: function(e){
@@ -107,3 +139,4 @@ function loginPageLoad() {
     $("#logInForm").fadeIn(8000);
     $("#welcomeWords  h2").lettering('words').children("span").lettering().children("span").lettering();
 }
+
