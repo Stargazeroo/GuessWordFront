@@ -1,0 +1,23 @@
+<div class="" id="trainingStartPage">
+    <% for (var el in this) { %>
+        <% if (this[el].type == "button") { %>
+            <% var elName = $.i18n.prop(this[el].name) %>
+            <a href="javascript:void(0);" class="btn" id="<%= this[el].id %>"><%= elName %></a>
+        <% } else { %>
+            <% var elName = $.i18n.prop(this[el].name) %>
+            <li id="<%= this[el].id %>" class="subMenu"><a class="btn" id="<%= this[el].id %>" value="<%= this[el].value %>"><%= elName %></a>
+                <ul >
+                    <% for (var option in this[el].options) { %>
+                        <li>
+                            <a href="javascript:void(0);" class="" id="<%= this[el].options[option].id %>" value="<%=this[el].options[option].value%>"><%= $.i18n.prop(this[el].options[option].name) %></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </li>
+        <% } %>
+    <% } %>
+</div>
+<%/* <audio id="traininStartPageAudio"  autoplay="autoplay">
+    <source src="sound/chooseDestiny.ogg" type='audio/ogg; codecs=vorbis'>
+    //<source src="sound/chooseDestiny.mp3" type="audio/mpeg">
+</audio> */%>

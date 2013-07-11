@@ -1,0 +1,18 @@
+ <% for (var el in this) { %>
+    <div id="<%=this[el].id%>" class="modal hide">
+        <div class="modal-header"><h3><%=$.i18n.prop(this[el].header)%></h3></div>
+        <div class="modal-body">
+            <p><%=this[el].body.img%></p>
+            <p><%=$.i18n.prop(this[el].body.content)%></p>
+        </div>
+        <div class="modal-footer">
+            <%if (this[el].footer.btnBack){%>
+                <div class="btn" id="btnBack"><%=$.i18n.prop(this[el].footer.btnBack)%></div>
+            <%}%>
+            <%if (this[el].footer.btnNext){%>
+                <div class="btn btn-success" id="btnNext"><%=$.i18n.prop(this[el].footer.btnNext)%></div>
+            <%}%>
+          <div class="btn btn-danger" id="btnClose"><%=$.i18n.prop(this[el].footer.btnClose)%></div>
+        </div>
+    </div>
+    <%}%>

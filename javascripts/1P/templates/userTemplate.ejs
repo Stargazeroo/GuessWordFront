@@ -1,0 +1,15 @@
+ <div id="userSection">
+    <div id="accordion">
+        <h4>
+            <%=this.main.login%>
+            <button id="logoutButton" class="btn"><%= $.i18n.prop(this.logout) %></button>
+        </h4>
+        <div>
+            <dl>
+            <dt><a><%=this.main.email%></a></dt>
+            <dt><%=$.i18n.prop(this.userAge)%></dt><dd><%=this.main.age%></span></dd>
+            <dt><%=$.i18n.prop(this.userLocation)%></dt><dd><%=this.main.location%></dd>
+            </dl>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div id="variantsShowBlock">
+    <%var i=0;
+    var varName = ["A","B","C","D"]%>
+    <%for (item in this) {%>
+        <div class="variantButtonContainer">
+            <button id="var<%=varName[i]%>" value="<%=item%>" class="translateVariants"><%=item%>(<%=this[item]%>)</button>
+        </div>
+    <% i++;
+    }%>
+</div>

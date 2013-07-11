@@ -8,11 +8,16 @@ var mainPageView = Backbone.View.extend({
     },
 
     render: function(mainSection, sideBarSection){
-        this.$el.empty();  // delets all elements from 'body' element
-        var mainSectionTemplate = new EJS({url:'/javascripts/1P/templates/mainSection.ejs'}).render(mainSection);
-        var sideBarSectionTemplate = new EJS({url:'/javascripts/1P/templates/sideBarSection.ejs'}).render(sideBarSection);
-        this.$el.append(mainSectionTemplate);
-        this.$el.append(sideBarSectionTemplate);
+        if (!getCookie("login")){
+            window.location.href = "http://guessword.com/#login";
+        }else{
+            var sideBarSectionTemplate = new EJS({url:'/javascripts/1P/templates/sideBarSection.ejs'}).render(sideBarSection);
+            this.$el.append(sideBarSectionTemplate);
+            this.$el.append('<div id="contentBlock"></div>');// delets all elements from 'body' element
+            var mainSectionTemplate = new EJS({url:'/javascripts/1P/templates/mainSection.ejs'}).render(mainSection);
+            this.$("#contentBlock").append(mainSectionTemplate);
+        }
+        
     }
 });
 

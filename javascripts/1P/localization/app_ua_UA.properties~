@@ -1,0 +1,81 @@
+# Main page properties
+app_guessword = Вгадай слово
+app_match = Матч
+app_training = Навчання
+app_help = Допомога
+app_about = Про програму
+
+app_en = англ
+app_ua = укр
+app_ru = рус
+
+# Registration page properties
+app_registration = Реєстрація
+app_login = Логін:
+app_email = Електронна пошта:
+app_enter_password = Введіть пароль:
+app_repeat_password = Повторіть пароль:
+app_birth_date = День народження:
+app_address = Адреса:
+app_register = Реєстрація
+
+# LogIn page properties
+app_password = Пароль:
+app_enter = Увійти
+app_registration = Реєстрація
+app_welcome = Вітаємо
+app_to = в грі
+app_sign_in = Вхід
+
+# LogOut page properties
+app_logout = Вийти
+
+# TrainingStartPage properties
+app_game = Гра
+app_difficulty = Складність
+app_start = Почати
+app_instructions = Інструкція
+app_translation = Переклад
+app_synonyms = Синоніми
+app_hard = Важко
+app_normal = Нормально
+app_easy = Легко
+
+# instrModal properties
+app_firstPage = Перша сторінка
+app_secondPage = Друга сторінка
+app_lastPage = Остання сторінка
+app_contentFirst = Зміст першої сторінки
+app_contentSecond = Зміст другої сторінки
+app_contentLast = Зміст третьої сторінки
+app_btnNext = Далі
+app_btnBack = Назад
+app_btnClose = Закрити
+
+#instrPrompt properties
+app_instrPromptHeader = Інструкція
+app_btnYes = Так
+app_chck = Більше не показувати дане повідомлення
+app_instructionText = Чи бажаєте ви ознайомитись з інструкцією перед початком гри?
+
+# User Training template properties
+app_wordsIncorrect = Неправильно:
+app_trainingTime = Час навчання:
+app_wordsCorrect = Правильно: 
+app_trainings = Кількість ігор:
+app_totalScore = Рахунок:
+app_ratio = Успішність:
+
+app_trainingResults = Результати навчання
+app_matchResults = Результати матчів
+app_age = Вік:
+app_location = Місто:
+
+# Training Game properties
+app_word_time = Залишилось на відповідь:
+app_game_time = До кінця ігри:
+app_score = Бали:
+app_put_word = Перетягніть слово сюди.
+app_message = Оберіть наступне слово.
+app_correct = Правильно.
+app_incorrect = Неправильно.

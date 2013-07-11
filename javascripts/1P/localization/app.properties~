@@ -1,0 +1,81 @@
+# Main page properties
+app_guessword = GuessWord
+app_match = Match
+app_training = Training
+app_help = Help
+app_about = About
+
+app_en = en
+app_ua = ua
+app_ru = ru
+
+# Registration page properties
+app_registration = Registration
+app_login = Your login:
+app_email = Your email:
+app_enter_password = Enter password:
+app_repeat_password = Repeat password:
+app_birth_date = Birth date:
+app_address = Your address:
+app_register = Register
+
+# LogIn page properties
+app_password = Your password:
+app_enter = Enter
+app_registration = Registration
+app_welcome = Welcome
+app_to = To
+app_sign_in = Sign in
+
+# LogOut page properties
+app_logout = Logout
+
+# TrainingStartPage properties
+app_game = Game
+app_difficulty = Difficulty
+app_start = Start
+app_instructions = Instructions
+app_translation = Translation
+app_synonyms = Synonyms
+app_hard = Hard
+app_normal = Normal
+app_easy = Easy
+
+# instrModal properties
+app_firstPage = First page
+app_secondPage = Seconf page
+app_lastPage = Last page
+app_contentFirst = First page's content
+app_contentSecond = Second page's content
+app_contentLast = Last page's content
+app_btnNext = Next
+app_btnBack = Back
+app_btnClose = Close
+
+# instrPrompt properties
+app_instrPromptHeader = Instruction
+app_btnYes = Yes
+app_chck = Don't show this message again
+app_instructionText = Would you like to read instruction first?
+
+# User Training template properties
+app_wordsIncorrect = Words incorrect:
+app_trainingTime = Training time:
+app_wordsCorrect = Words correct: 
+app_trainings = Total trainings:
+app_totalScore = Total score:
+app_ratio = Ratio:
+
+app_trainingResults = Training results
+app_matchResults = Match results
+app_age = Age:
+app_location = Location:
+
+# Training Game properties
+app_word_time = Answer time:
+app_game_time = Game time:
+app_put_word = Put word here.
+app_score = Score:
+app_message = Choose another word.
+app_correct = Correct.
+app_incorrect = Inorrect.
