@@ -5,7 +5,6 @@
     <h2><%=$.i18n.prop("app_sign_in")%></h2>
 </div>
 <form id="logInForm" method="POST">
-    <!--<h1>Sign in</h1>-->
     <% for (var item in this) { %>
         <% var elName = $.i18n.prop(this[item].explText) %>
         <p><%=elName%><input id="<%= this[item].id%>" type="<%= this[item].type%>" name="<%= this[item].name%>" class="span2"></p>

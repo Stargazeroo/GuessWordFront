@@ -1,3 +1,4 @@
+// **mainPageModel instance** 
 var mainPage = Backbone.Model.extend({
     defaults: {
         appTitle: "GuessWord",

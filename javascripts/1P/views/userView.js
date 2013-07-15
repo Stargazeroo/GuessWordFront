@@ -15,57 +15,47 @@ var userView = Backbone.View.extend({
 
     render: function(){
         if (!($.cookie("login"))){
-            window.location.href = "http://guessword.com/#login";
-        }else{   
-            this.$el.empty(); 
-            this.$el.unbind();
-            var data = JSON.parse($.cookie('login'));
-            var dataModel = new userModel();
-            dataModel.set(data);
-            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(dataModel.attributes);
-            jQuery.fn.exists = function() {
-                return $(this).length;
-            }
-            if (!(this.$el.children("#userSection")).exists()){
-                this.$el.append(userTemplate);
-            }
+            window.location.href = loginIndex;
+            return false;
+        }  
+        this.$el.empty(); 
+        this.$el.unbind();
+        var userData = new userModel();
+        var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
+
+        if (!(this.$el.children("#userSection")).length){
+            this.$el.append(userTemplate);
+            userSectionLoad();
         }
-        accordion();
+        if(window.location.href == "http://guessword.com/"){
+            accordion();
+        }
     },
 
     logout: function() {
         $.cookie('login', '', { expires: -1 });
-        window.location.href = "http://guessword.com/#login";
+        window.location.href = loginIndex;
         this.$("#userSection").remove();
         this.$("#logoutButton").remove();
         this.$el.unbind();
+        if (localStorage['neverShow']) {
+            localStorage.clear();
+            localStorage.setItem('neverShow', JSON.stringify(1));
+        } else {
+            localStorage.clear();
+        }
     },
 
     logPopout: function() {
         $('#logoutButton').tooltip({
-            'title'    : 'Logout',
-            'placement': 'bottom'
-            });
+            'title'    : $.i18n.prop('app_logout'),
+            'placement': 'right'
+        });
         $('#logoutButton').tooltip('show')
     },
     
     logPopoutOff: function() {
         $('#logoutButton').tooltip('hide')
     }
+    
 });
-
-function accordion() {
-    $("#accordion").accordion({
-        autoHeight: false,
-        collapsible: true,
-        active: url(),
-        icons: { "header": "defaultIcon", "activeHeader": "selectedIcon" } 
-    });
-    function url() {
-        if (window.location.href === "http://guessword.com/#training") {
-            return 1
-        } else {
-            return 0
-        }
-    }
-}

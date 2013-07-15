@@ -17,19 +17,21 @@ var trainingStartPageModel = Backbone.Model.extend({
                 "name": "app_game", // app property for localization
                 "id": "selGame",
                 "type": "select",
+                "value":"translation",
                 options: {
-                    translation: {"name": "app_translation", "id": "trans"},
-                    synonyms: {"name": "app_synonyms", "id": "syn"},
+                    translation: {"name": "app_translation", "id": "trans", "value":"translation"},
+                    synonyms: {"name": "app_synonyms", "id": "syn", "value":"synonyms"},
                 }
             },
             difficulty: {
                 "name" : "app_difficulty",
                 "id" : "selDifficulty",
+                "value" : "normal",
                 "type": "select",
                 options: {
-                    hard: {"name": "app_hard", "id": "difHard"},
-                    normal: {"name": "app_normal", "id": "difNormal"},
-                    easy: {"name": "app_easy", "id": "difEasy"}
+                    hard: {"name": "app_hard", "id": "difHard", "value":"hard"},
+                    normal: {"name": "app_normal", "id": "difNormal", "value":"normal"},
+                    easy: {"name": "app_easy", "id": "difEasy", "value":"easy"}
                 }
             }
         }

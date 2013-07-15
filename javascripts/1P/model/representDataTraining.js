@@ -1,6 +1,6 @@
 var representDataTraining = Backbone.Model.extend({
-    defaults:{
-        "login"         : "", 
+    gameResult:{
+        "email"         : "", 
         "wordsCorrect"  : 0, 
         "wordsIncorrect": 0, 
         "trainingTime"  : 0, 
