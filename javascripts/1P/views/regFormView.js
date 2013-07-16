@@ -5,45 +5,49 @@ var registrationView = Backbone.View.extend({
         "focus #mail_id " : "validMail",
         "focus #login " : "validLogin",
         "focus #repass_id" : "validPass",
-    },
+        "click #errorBtnClose": "popupErrorClose",
+        "click #successBtnClose": "popupSuccessClose"
+    },    
     initialize: function(regModelInputFields, regModelButtons){
         _.bindAll(this, 'render', 'onSubmit','validMail', 'validLogin', 'validPass');
         this.render(regModelInputFields, regModelButtons);
     },
-    render: function(regModelInputFields, regModelButtons){
-        this.$el.unbind();
+    render: function(regModelInputFields, regModelButtons){ 
+        this.$el.unbind();  
         this.$el.empty();
         var regForm = new EJS({url:'/javascripts/1P/templates/regFormInputsList.ejs'}).render(regModelInputFields);
         this.$el.append(regForm);
         var confirmButton = new EJS ({url:'/javascripts/1P/templates/regFormSubmitButton.ejs'}) .render(regModelButtons);
         this.$('#regForm').append(confirmButton);
-regPageLoad();
+        regPageLoad();
     },
     onSubmit: function(e){
-        e.preventDefault();
+        e.preventDefault(); 
         var representModel = new regRepresentationDataModel({
             login: this.$("#login").val(),
             email: this.$("#mail_id").val(),
             password: this.$("#pass").val(),
             dob: this.$("#dob_id").val(),
             location: this.$("#location_id").val()
-        });
+        });   
         $.ajax({
             type: "POST",
-            url: "http://localhost:5000/registration/index",
+            url: REGISTRATION,
             dataType: 'json',
             data: representModel.toJSON(),
-            success: function(data){
-                console.log(data)
-                if (data.ANSWER == "1"){
-                    alert("Registration was successful");
-                    window.location.href = "http://guessword.com";
-                }else{
-                    alert("There are some problems")
+            success: function(data, status){
+                if (data.SUCCESS == RESPONSE_STATUS_SUCCESS){
+                    var successPopup = new EJS({url:'/javascripts/1P/templates/popupRegistrationResult.ejs'}).render(regResultModelObject.success);
+                    $('#contentBlock').append(successPopup);
+                    $('#regResult').show();
                 }
             },
-            error: function(data, status){
-                console.log(status)
+            error: function(error){
+                regResultModelObject.set("errors", JSON.parse(error.responseText));
+                console.log(regResultModelObject.attributes);
+                var errorPopup = new EJS({url:'/javascripts/1P/templates/popupRegistrationResult.ejs'}).render(regResultModelObject);
+                $('#contentBlock').append(errorPopup);
+                $('#regResult').show();
             }
         });
     },
@@ -56,10 +60,10 @@ regPageLoad();
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
                 stopMail = 0;
-            }
+            }            
             _isStop(stopPass,stopLogin,stopMail)
         })
-    },
+    },    
     validLogin: function(){
         $("#login").keyup(function(){
             var login = $(this).val();
@@ -69,7 +73,6 @@ regPageLoad();
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
                 stopLogin = 0;
-                //console.log('ololo1');
             }
             _isStop(stopPass,stopLogin,stopMail)
         })
@@ -80,14 +83,23 @@ regPageLoad();
             if (!($(this).val() === $("#pass").val())){
                 $(this).siblings("i.icon-remove").css('display','inline-block').siblings("i.icon-ok").css('display','none');
                 stopPass = 1;
-                //console.log('valid');
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
-                //console.log('invalid');
                 stopPass = 0;
             }
             _isStop(stopPass,stopLogin,stopMail)
         })
+    },
+
+    popupErrorClose: function(e){
+        e.preventDefault();
+        $(e.target).parent().parent().hide();
+    },
+
+    popupSuccessClose: function(e){
+        e.preventDefault();
+        $(e.target).parent().parent().hide();
+        window.location.href = loginIndex;
     },
 });
 
@@ -112,7 +124,18 @@ function _isStop(stopPass,stopLogin,stopMail) {
         $("#reg_button").attr("disabled", "disabled");
     }
 };
+
 function regPageLoad() {
     $("#regForm").css("display", "none");
     $("#regForm").fadeIn(2000);
-}
+    $('#regForm input').css({
+        "background": "linear-gradient(to bottom, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%)",
+        "width": "200px"
+    });
+    $('#reg_button').css({
+        "width" : "100%",
+        "padding" : "5px 0px",
+        "margin-top" : "5px"
+    });
+};
+
