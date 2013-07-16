@@ -15,7 +15,7 @@ var userView = Backbone.View.extend({
 
     render: function(){
         if (!($.cookie("login"))){
-            window.location.href = "http://guessword.com/#login";
+            window.location.href = loginIndex;
         }else{   
             this.$el.empty(); 
             this.$el.unbind();
@@ -24,25 +24,27 @@ var userView = Backbone.View.extend({
 
             if (!(this.$el.children("#userSection")).length){
                 this.$el.append(userTemplate);
+                userSectionLoad();
             }
         }
-        if (window.location.href != "http://guessword.com/#training"){
+        if(window.location.href == mainIndex){
             accordion();
         }
     },
 
     logout: function() {
         $.cookie('login', '', { expires: -1 });
-        window.location.href = "http://guessword.com/#login";
+        window.location.href = loginIndex;
         this.$("#userSection").remove();
         this.$("#logoutButton").remove();
         this.$el.unbind();
+        localStorage.clear();
     },
 
     logPopout: function() {
         $('#logoutButton').tooltip({
-            'title'    : 'Logout',
-            'placement': 'bottom'
+            'title'    : $.i18n.prop('app_logout'),
+            'placement': 'right'
         });
         $('#logoutButton').tooltip('show')
     },
@@ -50,20 +52,19 @@ var userView = Backbone.View.extend({
     logPopoutOff: function() {
         $('#logoutButton').tooltip('hide')
     }
+    
 });
 
 function accordion() {
     $("#accordion").accordion({
         autoHeight: false,
         collapsible: true,
-        active: url(),
+        active: (window.location.href === trainingStartIndex)? 1:0,
         icons: { "header": "defaultIcon", "activeHeader": "selectedIcon" } 
     });
-    function url() {
-        if (window.location.href === "http://guessword.com/#training") {
-            return 1
-        } else {
-            return 0
-        }
-    }
+}
+
+function userSectionLoad() {
+    $("#userSection").css("display", "none");
+    $("#userSection").fadeIn(1500);
 }

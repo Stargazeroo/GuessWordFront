@@ -1,5 +1,7 @@
+// **userModel instance** 
 var userModel = Backbone.Model.extend({
     defaults: {
+        backBut: "app_backBut",
         logout: "app_logout",
         trainingResults: "app_trainingResults",
         matchResults   : "app_matchResults",
@@ -18,8 +20,8 @@ var userModel = Backbone.Model.extend({
     initialize: function(){
         var main = JSON.parse(localStorage['main']);
         this.set("main", main);
-        var training = JSON.parse(localStorage['training']);
-        if (training) {
+        if (localStorage['training']) {
+            var training = JSON.parse(localStorage['training']);
             this.set("training", training);
         }
     }

@@ -7,17 +7,29 @@ var userTrainingView = userView.extend({
         this.render(userData);
         accordion();
     },
+    
+    events: {
+        "click #backButt" : "goBack"
+    },
 
     render: function(userData){  
         if (!($.cookie("login"))){
             window.location.href = "http://guessword.com/#login";
         }else{    
             this.$("#userTrainingSection").unbind();
+            var backButt = new EJS({url:'/javascripts/1P/templates/backButton.ejs'}).render(userData.attributes);
             var userTrainingTemplate = new EJS({url:'/javascripts/1P/templates/userTrainingTemplate.ejs'}).render(userData.attributes);
 
             if (!(this.$('#accordion').children("#userTrainingSection")).length){
                 this.$('#accordion').append(userTrainingTemplate);
+                this.$("#userSection").append(backButt);
             }
         }
+    },
+    
+    goBack: function(e) {
+        e.preventDefault();
+        Backbone.history.loadUrl(window.history.back());
     }
 });
+
