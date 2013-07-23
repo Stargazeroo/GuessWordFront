@@ -1,5 +1,6 @@
 var trainingGameModel = Backbone.Model.extend({
-    defaults: {
-        "difficulty":"low"
+    settings: {
+        "difficulty":"easy"
     }
 });
+var trainingModelObj = new trainingGameModel()

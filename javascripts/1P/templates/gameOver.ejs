@@ -1,0 +1,13 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h3><%=$.i18n.prop(this.header)%></h3>
+      <h3 id="hedertext"></h3>
+    </div>
+    <div class="modal-body">
+        <h3 id="endresult"></h3>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" id="btnTryAgain"><a href="http://guessword.com/#login"><%=$.i18n.prop(this.footer.btnYes)%></a></button>
+      <button class="btn" id="btnClose" data-dismiss="modal" aria-hidden="true"><%=$.i18n.prop(this.footer.btnClose)%></button>
+    </div>
+</div>

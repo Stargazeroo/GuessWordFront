@@ -21,23 +21,15 @@ var sideBarSectionView = Backbone.View.extend({
         });
         console.log("Language changed to "+language_id);
         this.start();
+        localStorage.setItem('language', JSON.stringify(language_id));
     },
 
     render: function(sideBarSection){
         this.$el.unbind(); //helps to avoid zombie views
         var sideBarSectionTemplate = new EJS({url:'/javascripts/1P/templates/sideBarSection.ejs'}).render(sideBarSection);
-        jQuery.fn.exists = function() {
-           return $(this).length;
-        }
-        if ((this.$el.children("#sideBarSection")).exists()){
-            console.log("exist");
-            //this.$el.append(sideBarSectionTemplate);
-        }
-        else {
-            console.log("Notexist");
+        if (!(this.$el.children("#sideBarSection")).length) {
             this.$el.append(sideBarSectionTemplate);
         }
-        sideBarSectionLoad();
     },
 
     close: function () {
@@ -51,7 +43,4 @@ var sideBarSectionView = Backbone.View.extend({
     }
 
 });
-function sideBarSectionLoad() {
-    $("#sideBarSection").css("display", "none");
-    $("#sideBarSection").fadeIn(2000);
-}
+

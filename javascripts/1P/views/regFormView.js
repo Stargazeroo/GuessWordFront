@@ -17,7 +17,7 @@ var registrationView = Backbone.View.extend({
         this.$el.append(regForm);
         var confirmButton = new EJS ({url:'/javascripts/1P/templates/regFormSubmitButton.ejs'}) .render(regModelButtons);
         this.$('#regForm').append(confirmButton);   
-	regPageLoad();
+	    regPageLoad();
     },
     onSubmit: function(e){
         e.preventDefault(); 
@@ -35,9 +35,9 @@ var registrationView = Backbone.View.extend({
             data: representModel.toJSON(),
             success: function(data){
                 console.log(data)
-                if (data.ANSWER == "success"){
+                if (data.ANSWER == "1"){
                     alert("Registration was successful");
-                    window.location.href = "http://guessword.com";
+                    window.location.href = mainIndex;
                 }else{                    
                     alert("There are some problems")
                 }
@@ -90,7 +90,8 @@ var registrationView = Backbone.View.extend({
             _isStop(stopPass,stopLogin,stopMail)
         })
     },
-});
+
+    });
 
 var stopMail = 1;
 var stopLogin = 1;
@@ -113,7 +114,3 @@ function _isStop(stopPass,stopLogin,stopMail) {
         $("#reg_button").attr("disabled", "disabled");
     }
 };
-function regPageLoad() {
-    $("#regForm").css("display", "none");
-    $("#regForm").fadeIn(2000);
-}
