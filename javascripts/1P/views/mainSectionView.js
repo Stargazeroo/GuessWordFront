@@ -47,8 +47,8 @@ var mainSectionView = Backbone.View.extend({
         e.preventDefault();
         this.undelegateEvents();
         $('#mainSection a').removeClass('rotate');
-        $('#mainSection a').not(e.currentTarget).addClass('clickAnim').css('background', "#000000");
-        $('#mainSection a').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
+        $(e.currentTarget).addClass('clickAnim').siblings().css('background', "#000000");
+        $(e.currentTarget).on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
             window.location.href = $(e.currentTarget).attr('href');
         });
     },

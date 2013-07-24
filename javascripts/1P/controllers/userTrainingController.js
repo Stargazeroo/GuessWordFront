@@ -3,17 +3,20 @@ var userTrainingController = Backbone.Model.extend({
     initialize: function() {
         $.ajax({
             type: 'POST',
-            dataType:'json',
-            url: "http://localhost:5000/training/get",
+            dataType: "json",
+            url: TRAINING_GET,
             data: {"email": JSON.parse(localStorage['main']).email},
-            success: function(data, status){        
+            success: function(data, status){     
                 localStorage.setItem('training', JSON.stringify(data));
-                var userData= new userModel();
+                var userData = new userModel();
                 new userTrainingView(userData);
             },
-            error: function(data, status){
-                console.log(status)
+            error: function(error,status){
+                var errorPopup = new EJS({url:'/javascripts/1P/templates/popupError.ejs'}).render(error);
+                $('#contentBlock').append(errorPopup);
+                $('#popupError').show();
             }
         })
-    }
+    },
+
 });

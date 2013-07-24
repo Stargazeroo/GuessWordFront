@@ -4,7 +4,7 @@ var userModel = Backbone.Model.extend({
         backBut: "app_backBut",
         logout: "app_logout",
         trainingResults: "app_trainingResults",
-        matchResults   : "app_matchResults",
+        matchResults : "app_matchResults",
         userAge: "app_age",
         userLocation: "app_location",
         trainingAttributes: {

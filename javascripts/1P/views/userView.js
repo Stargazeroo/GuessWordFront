@@ -16,18 +16,18 @@ var userView = Backbone.View.extend({
     render: function(){
         if (!($.cookie("login"))){
             window.location.href = loginIndex;
-            return false;
-        }  
-        this.$el.empty(); 
-        this.$el.unbind();
-        var userData = new userModel();
-        var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
+        }else{   
+            this.$el.empty(); 
+            this.$el.unbind();
+            var userData = new userModel();
+            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
 
-        if (!(this.$el.children("#userSection")).length){
-            this.$el.append(userTemplate);
-            userSectionLoad();
+            if (!(this.$el.children("#userSection")).length){
+                this.$el.append(userTemplate);
+                userSectionLoad();
+            }
         }
-        if(window.location.href == "http://guessword.com/"){
+        if(window.location.href == mainIndex){
             accordion();
         }
     },
@@ -38,12 +38,7 @@ var userView = Backbone.View.extend({
         this.$("#userSection").remove();
         this.$("#logoutButton").remove();
         this.$el.unbind();
-        if (localStorage['neverShow']) {
-            localStorage.clear();
-            localStorage.setItem('neverShow', JSON.stringify(1));
-        } else {
-            localStorage.clear();
-        }
+        localStorage.clear();
     },
 
     logPopout: function() {
