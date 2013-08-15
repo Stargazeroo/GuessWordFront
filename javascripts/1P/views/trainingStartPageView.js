@@ -1,14 +1,15 @@
 var trainingStartPageView = Backbone.View.extend({
     el: $('#contentBlock'),
 
-    initialize: function(trainingStartPageElements){
+    initialize: function(trainingStartPageElements, currentWindow){
         _.bindAll(this, 'render');
-        this.render(trainingStartPageElements);
+        this.render(trainingStartPageElements, currentWindow);
     },
 
-    render: function(trainingStartPageElements){
+    render: function(trainingStartPageElements, currentWindow){
         if (!($.cookie("login"))){
-            window.location.href = loginIndex;
+            var currentWindow = currentWindow || window;
+            currentWindow.location.href = loginIndex;
             return false;
         }
         this.$el.empty();
@@ -30,7 +31,7 @@ var trainingStartPageView = Backbone.View.extend({
     },
 
     events: {
-        "click .subMenu ul a": "choose",
+        "click .subMenu ul a": "chooseDiff",
         "mouseover #trainingStartPage a.btn" : "hov",
         "mouseover #trainingStartPage li a.btn" : "hov",
         "mouseout #trainingStartPage a.btn" : "hovOut",
@@ -45,24 +46,26 @@ var trainingStartPageView = Backbone.View.extend({
 
     },
 
-    choose: function(e){
+    chooseDiff: function(e){
         var opt = $(e.currentTarget).text();
         var value = $(e.currentTarget).attr("value");
         var el = $(e.currentTarget).parents().eq(2);
-        var buttText = $(el).attr("id") == "selGame"
+        var buttText = $(el).attr("class") == "selGame subMenu"
             ? "app_game"
             : "app_difficulty";
         $(el).children("a").text($.i18n.prop(buttText)+": "+ opt);
         $(el).children("a").attr("value", value);
     },
 
-    showInst: function(e){
+    showInst: function(e, showInstRedirect){
         e.preventDefault();
+        e.stopPropagation();
         if (!localStorage['neverShow']){
             $('#instrPrompt').show();
-        } else {
-            window.location.href = trainingGameIndex;
-            trainingModelObj.set("settings",{"difficulty":$("#selDifficulty a").attr("value")});
+        } else {       
+            var currentWindow = showInstRedirect || window;
+            currentWindow.location.href = trainingGameIndex;
+            trainingModelObj.set("settings",{"difficulty":$("a#selDifficulty").attr("value")});
         }
     },
     
@@ -79,6 +82,7 @@ var trainingStartPageView = Backbone.View.extend({
 
     modalClose: function(e){
         e.preventDefault();
+        e.stopPropagation();
         $(e.target).parent().parent().hide();
 
     },
@@ -105,11 +109,13 @@ var trainingStartPageView = Backbone.View.extend({
         }
     },
 
-    closeInstrStart: function(e){
+    closeInstrStart: function(e, closeInstrStartRedirect){
         e.preventDefault();
+        e.stopPropagation();
         $(e.target).parent().parent().hide();
-        window.location.href = trainingGameIndex;
-        trainingModelObj.set("settings",{"difficulty":$("#selDifficulty a").attr("value")});
+        var currentWindow = closeInstrStartRedirect || window;
+        currentWindow.location.href = trainingGameIndex;
+        trainingModelObj.set("settings",{"difficulty":$("a#selDifficulty").attr("value")});
     }
 
 });

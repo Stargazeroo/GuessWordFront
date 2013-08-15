@@ -16,6 +16,7 @@
     border: 0 none; 
     font-size: 100%; 
     -moz-user-select:none;
+    -webkit-user-select:none;
     user-select: none;
 }
 
@@ -32,6 +33,20 @@ body {
     background: -webkit-linear-gradient(top, rgba(51,57,86,1) 0%,rgba(39,43,66,1) 32%,rgba(35,38,58,1) 65%,rgba(63,76,107,1) 100%); /* Chrome10+,Safari5.1+ */
 }
 
+body:after {
+    /*background:url("/images/footer-background.png") repeat scroll 0 0 / contain transparent;*/
+    background:url("/images/water-footer.png");
+    background-repeat:no-repeat;
+    background-position:0px 0px;
+    background-size:100% 100%;
+    width:100%;
+    height:70px;
+    position:absolute;
+    display:block;
+    bottom:0;
+    content:"";
+    z-index:-1;
+}
 
 /*main page styles*/
 #mainSection { 
@@ -47,30 +62,12 @@ body {
     background-image: -webkit-linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
     background-image: linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
     background-image: -moz-linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
-    -webkit-box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
-    -moz-box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
-    box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
+    -webkit-box-shadow:0 0 30px #2AB7EC, 29px -29px 0 5px #032B3A, 0 0 0 #999999;
+    -moz-box-shadow:0 0 30px #2AB7EC, 29px -29px 0 5px #032B3A, 0 0 0 #999999;
+    box-shadow:0 0 30px #2AB7EC, 29px -29px 0 5px #032B3A, 0 0 0 #999999;
     background:url("/images/TTF.png") no-repeat scroll 0 0 / 100% 100% transparent;
     z-index:1;
 }
-/*#mainSection::before {
-    background-color:#2561b4;
-    width:100%;
-    height:100%;
-    position:absolute;
-    display:block;
-    top:0px;
-    content:"";
-    background-image: -moz-linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
-    background-image: -webkit-linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
-    background-image: linear-gradient(center bottom , #0A5E7D 0%, #B191AF 100%);
-    border-radius:5px;
-    -webkit-box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
-    -moz-box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
-    box-shadow:0 0 30px #2AB7EC, 37px -36px 0 10px #032B3A, 0 0 0 #999999;
-    opacity:0.5;
-}*/
-
 
 #mainSection a { 
     padding:15px; 
@@ -99,130 +96,144 @@ body {
 @-moz-keyframes clickAnimation {
     2% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5);
+        -moz-transform: scale3d(2,2,2);
     }
     40% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(3px, 2px) rotate(0deg);
+        -moz-transform: scale3d(2,2,2) translate(3px, 2px) rotate(0deg);
     }
     42% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(-2px, -3px) rotate(-2deg);
+        -moz-transform: scale3d(2,2,2) translate(-2px, -3px) rotate(-2deg);
     }
     44% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(-4px, 1px) rotate(2deg);
+        -moz-transform: scale3d(2,2,2) translate(-4px, 1px) rotate(2deg);
     }
     46% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(1px, 3px)  rotate(0deg);
+        -moz-transform: scale3d(2,2,2) translate(1px, 3px)  rotate(0deg);
     }
     48% {
         margin-bottom:0px;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(2px, -2px)  rotate(2deg);
+        -moz-transform: scale3d(2,2,2) translate(2px, -2px)  rotate(2deg);
     }
     50% {
         margin-bottom:0px;
-        opacity:0.9;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(-2px, 3px) rotate(-2deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(-2px, 3px) rotate(-2deg);
     }
     52% {
         margin-bottom:0px;
-        opacity:0.8;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(-4px, 2px) rotate(0deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(-4px, 2px) rotate(0deg);
     }
     54% {
         margin-bottom:0px;
-        opacity:0.6;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(3px, 2px) rotate(-2deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(3px, 2px) rotate(-2deg);
     }
     56% {
         margin-bottom:0px;
-        opacity:0.5;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(-2px, -2px) rotate(2deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(-2px, -2px) rotate(2deg);
     }
     58% {
         margin-bottom:0px;
-        opacity:0.4;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(3px, 3px) rotate(0deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(3px, 3px) rotate(0deg);
     }
     60% {
         margin-bottom:0px;
-        opacity:0.3;
-        -moz-transform: scale3d(1.5,1.5,1.5) translate(2px, -3px) rotate(-1deg);
+        opacity:1;
+        -moz-transform: scale3d(2,2,2) translate(2px, -3px) rotate(-1deg);
     }
 
     90% {
         margin-bottom:0px;
         opacity:0;
-        -moz-transform:scale3d(5,5,5);
+        -moz-transform:scale3d(5.5,5.5,5.5);
     }
 
 }
 @-webkit-keyframes clickAnimation {
     2% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5);
+        -webkit-transform: scale3d(2,2,2);
     }
     40% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(2px, 1px) rotate(0deg);
+        -webkit-transform: scale3d(2,2,2) translate(2px, 1px) rotate(0deg);
     }
     42% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(-1px, -2px) rotate(-1deg);
+        -webkit-transform: scale3d(2,2,2) translate(-1px, -2px) rotate(-1deg);
     }
     44% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(-3px, 0px) rotate(1deg);
+        -webkit-transform: scale3d(2,2,2) translate(-3px, 0px) rotate(1deg);
     }
     46% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(0px, 2px)  rotate(0deg);
+        -webkit-transform: scale3d(2,2,2) translate(0px, 2px)  rotate(0deg);
     }
     48% {
         margin-bottom:0px;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(1px, -1px)  rotate(1deg);
+        -webkit-transform: scale3d(2,2,2) translate(1px, -1px)  rotate(1deg);
     }
     50% {
         margin-bottom:0px;
-        opacity:0.9;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(-1px, 2px) rotate(-1deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(-1px, 2px) rotate(-1deg);
     }
     52% {
         margin-bottom:0px;
-        opacity:0.8;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(-3px, 1px) rotate(0deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(-3px, 1px) rotate(0deg);
     }
     54% {
         margin-bottom:0px;
-        opacity:0.6;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(2px, 1px) rotate(-1deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(2px, 1px) rotate(-1deg);
     }
     56% {
         margin-bottom:0px;
-        opacity:0.5;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(-1px, -1px) rotate(1deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(-1px, -1px) rotate(1deg);
     }
     58% {
         margin-bottom:0px;
-        opacity:0.4;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(2px, 2px) rotate(0deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(2px, 2px) rotate(0deg);
     }
     60% {
         margin-bottom:0px;
-        opacity:0.3;
-        -webkit-transform: scale3d(1.5,1.5,1.5) translate(1px, -2px) rotate(-1deg);
+        opacity:1;
+        -webkit-transform: scale3d(2,2,2) translate(1px, -2px) rotate(-1deg);
     }
 
     90% {
         margin-bottom:0px;
         opacity:0;
-        -webkit-transform: scale3d(5,5,5);
+        -webkit-transform: scale3d(5.5,5.5,5.5);
     }
 
 }
 
+.clickAnimSiblings {
+    -moz-animation: clickAnimateSiblings 2s linear forwards;
+    -webkit-animation: clickAnimateSiblings 2s linear forwards;
+    animation: clickAnimateSiblings 2s linear forwards;
+}
+
+@-moz-keyframes clickAnimateSiblings {
+    90% {
+        background:#000000;
+        opacity:0.1;
+        z-index:-10;
+        -moz-transform: rotateZ(360deg) scale(0.2);
+    }
+}
 .rotate {
     -moz-animation: menurotate 1s; 
     -webkit-animation: menurotate 1s; 
@@ -336,8 +347,14 @@ body {
     -webkit-transition: all 1.5s ease;
     outline: none;
     border-color: #3399FF;
-    box-shadow: 0 0 2px #3399FF;
+    box-shadow: 0 0 1px 1px #3399FF;
     color: black;
+    -moz-user-select:text;
+    -webkit-user-select:text;
+    user-select:text;
+}
+#regForm input:focus {
+    box-shadow: 0 0 3px 2px #3399FF;
 }
 #regForm #reg_button {
     text-transform:uppercase;
@@ -408,13 +425,19 @@ body {
     padding:2px 4px;
     background:#ffffff;
     /*background: linear-gradient(to bottom, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%);*/
-    -moz-transition:all 2s ease;
-    -webkit-transition: all 2s ease;
+    -moz-transition:all 2s linear;
+    -webkit-transition: all 2s linear;
     outline: none;
     border-color: #3399FF;
-    box-shadow: 0 0 2px #3399FF;
+    box-shadow: 0 0 1px 1px #3399FF;
     color: black;
+    -moz-user-select:text;
+    -webkit-user-select:text;
+    user-select:text;
 }
+#logInForm input:focus{
+    box-shadow: 0 0 3px 2px #3399FF;
+} 
 #submitButton {
     text-transform:uppercase;
     cursor:pointer;
@@ -674,6 +697,7 @@ body {
 }
 #facebookButt:hover {
     -moz-transform: translate(-4px, 5px) scale3d(1.5,1.5,1.5);
+    -webkit-transform: translate(-4px, 5px) scale3d(1.5,1.5,1.5);
 }
 
 /* back button*/
@@ -689,6 +713,9 @@ body {
     text-shadow:3px 2px 1px #5F5A86;
     padding:0.7em 0.5em 0.5em 0.5em;
     text-align:center;
+    -moz-box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
+    -webkit-box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
+    box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
     -moz-transition:all 0.5s ease-in-out;
     -webkit-transition:all 0.5s ease-in-out;
     transition:all 0.5s ease-in-out;
@@ -707,6 +734,13 @@ body {
     padding-bottom:3px;
     color:#F7F8FF;
     text-shadow: 1px 1px 0 rgba(30, 30, 39, 0.69);
+}
+#userSection{
+    -moz-box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
+    -webkit-box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
+    box-shadow:0 0 0 #2AB7EC, 3px -1px 0 2px #032B3A, 3px 0 8px #2AB7EC;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
 }
 #userSection span {
     margin:0 auto;
@@ -820,15 +854,19 @@ body {
 #trainingStartPage {
     position:absolute; 
     top:30%; 
-    width:600px;
+    width:230px;
     left:0;
     right:0;
     margin:0 auto;
+    border-radius:5px;
+    -webkit-box-shadow:0 0 0 #2AB7EC, 3px -3px 0 2px #032B3A, 0 0 18px #2AB7EC;
+    -moz-box-shadow:0 0 0 #2AB7EC, 3px -3px 0 2px #032B3A, 0 0 18px #2AB7EC;
+    box-shadow:0 0 0 #2AB7EC, 3px -3px 0 2px #032B3A, 0 0 18px #2AB7EC;
 }
 #trainingStartPage a.btn {
     padding:15px; 
     display:block; 
-    width:230px; 
+    width:100%; 
     position:relative; 
     font:bold 14px tahoma;
     color:#F9EFED;
@@ -855,11 +893,12 @@ body {
 .subMenu {
     position: relative;
     width:230px;
-    left:185px;
+    left:0;
 }
 
 .subMenu ul {
-    margin: 20px 0 0 0;
+    margin-top:30px;
+    margin-left:20px;
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -869,8 +908,11 @@ body {
     background: linear-gradient(to bottom, #5d2b59 0%,#5d2b59 100%);
     background: -moz-linear-gradient(to bottom, #5d2b59 0%,#5d2b59 100%);
     background: -webkit-linear-gradient(to bottom, #5d2b59 0%,#5d2b59 100%);
+    -webkit-box-shadow:0 0 0 #2AB7EC, 3px -2px 0 2px #032B3A, 0 0 18px #999999;
+    -moz-box-shadow:0 0 0 #2AB7EC, 3px -2px 0 2px #032B3A, 0 0 18px #999999;
+    box-shadow:0 0 0 #2AB7EC, 3px -2px 0 2px #032B3A, 0 0 18px #999999;
     border-radius: 3px;
-    transition: all .5s ease-in-out;  
+    transition: all .7s ease-in-out;  
 }
 .subMenu:hover > ul {
     opacity: 1;
@@ -924,7 +966,7 @@ body {
     border-top:6px solid transparent;
 }
 .subMenu ul li:first-child a:hover:after {
-    border-right-color: #04acec; 
+    border-right-color: #81699D; 
 }
 .subMenu ul li:last-child > a {
     border-radius: 0 0 5px 5px;
@@ -1224,10 +1266,6 @@ DEMO 3
     left:0;
 }
 
-#instrPrompt .modal-footer .checkbox {
-    width:260px;
-}
-
 #sk {
     position:absolute;
     display:block;
@@ -1297,4 +1335,60 @@ DEMO 3
         display:none;
         -webkit-transform: rotate(360deg);
     }
+}
+
+/* ------------- modal window/ instruction --------------- */
+#firstModal .modal-body {
+    background:url(/images/instruction1.png) no-repeat scroll 0 0 / 100% 100%  #B8B5BC;
+    padding: 140px;
+    border-left: 4px solid #B8B5BC;
+    border-right:4px solid #B8B5BC;
+}
+#secondModal .modal-body {
+    background:url(/images/instructions2.png) no-repeat scroll 0 0 / 100% 100%  #B8B5BC;
+    padding: 140px;
+    border-left: 4px solid #B8B5BC;
+    border-right:4px solid #B8B5BC;
+}
+#lastModal .modal-body {
+    background:url(/images/instructions3.png) no-repeat scroll 0 0 / 100% 100% #B8B5BC;
+    padding: 140px;
+    border-left: 4px solid #B8B5BC;
+    border-right:4px solid #B8B5BC;
+}
+
+#firstModal .modal-header,
+#secondModal .modal-header,
+#lastModal .modal-header {
+    border:none;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    background:#B8B5BC;
+}
+#firstModal .modal-footer,
+#secondModal .modal-footer,
+#lastModal .modal-footer {
+    border:none;
+    box-shadow:none;
+    background:#B8B5BC;
+}
+
+#instrPrompt .modal-header {
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    background:#F2DEE3;
+    border:none;
+}
+#instrPrompt .modal-footer {
+    background:#F2DEE3;
+    border:none;
+    box-shadow:none;
+}
+#instrPrompt .modal-body {
+    background:#F7F4F5;
+    border-left: 6px solid #F2DEE3;
+    border-right:6px solid #F2DEE3;
+}
+#instrPrompt .modal-footer .checkbox {
+    width:245px;
 }

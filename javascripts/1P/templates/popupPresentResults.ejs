@@ -1,7 +1,8 @@
 <div id="variantsShowBlock">
-    <%for (item in this) {%>
-        <div class="popupResults">
-            <%=item%>: <%=this[item]%>
-        </div>
-    <%}%>
+    <div class="go"><%=$.i18n.prop("app_email")%>               :  <%=this.email%></div>
+    <div class="go"><%=$.i18n.prop("app_correctWords")%>        :  <%=this.correctwords%></div>
+    <div class="go"><%=$.i18n.prop("app_incorrectWords")%>      :  <%=this.incorrectwords%></div>
+    <div class="go"><%=$.i18n.prop("app_trainingTime")%>        :  <%=this.trainingtime%></div>
+    <div class="go"><%=$.i18n.prop("app_totalScore")%>          :  <%=this.totalscore%></div>
+    <div class="go"><%=$.i18n.prop("app_trainingDate")%>        :  <%=this.trainingdate%></div>
 </div>

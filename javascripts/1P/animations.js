@@ -60,3 +60,20 @@ function accordion() {
         icons: { "header": "defaultIcon", "activeHeader": "selectedIcon" } 
     });
 }
+
+// animating main menu buttons
+function menuRotate() {
+    $("#mainSection  > a").hover(function() {
+        var el = this;
+        var color = 'rgb(' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ')';
+        $(el).addClass('rotate').css('background', color);
+        setTimeout(function() {
+            $(el).removeClass('rotate');
+        }, 1200);
+    });
+}
+
+function trainingGameLoad() {
+    $('#selectAnswer').hide().fadeIn(1000);
+    $('#sideWordsSelect').hide().fadeIn(500);
+}

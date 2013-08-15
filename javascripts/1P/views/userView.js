@@ -8,37 +8,39 @@ var userView = Backbone.View.extend({
         "mouseout #logoutButton" : "logPopoutOff"
     },
 
-    initialize: function(){
+    initialize: function(currentWindow){
         _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
-        this.render();
+        this.render(currentWindow);
     },
 
-    render: function(){
+    render: function(currentWindow){
+        currentWindow = currentWindow || window;
         if (!($.cookie("login"))){
-            window.location.href = loginIndex;
-        }else{   
-            this.$el.empty(); 
-            this.$el.unbind();
-            var userData = new userModel();
-            var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
+            currentWindow.location.href = loginIndex;
+            return false;
+        } 
+        this.$el.empty(); 
+        this.$el.unbind();
+        var userData = new userModel();
+        var userTemplate = new EJS({url:'/javascripts/1P/templates/userTemplate.ejs'}).render(userData.attributes);
 
-            if (!(this.$el.children("#userSection")).length){
-                this.$el.append(userTemplate);
-                userSectionLoad();
-            }
+        if (!(this.$el.children("#userSection")).length){
+            this.$el.append(userTemplate);
+            userSectionLoad();
         }
-        if(window.location.href == mainIndex){
+        if(currentWindow.location.href == mainIndex){
             accordion();
         }
     },
 
-    logout: function() {
+    logout: function(e, currentWindow) {
         $.cookie('login', '', { expires: -1 });
-        window.location.href = loginIndex;
         this.$("#userSection").remove();
         this.$("#logoutButton").remove();
         this.$el.unbind();
         localStorage.clear();
+        currentWindow = currentWindow || window;
+        currentWindow.location.href = loginIndex;
     },
 
     logPopout: function() {
@@ -46,11 +48,10 @@ var userView = Backbone.View.extend({
             'title'    : $.i18n.prop('app_logout'),
             'placement': 'right'
         });
-        $('#logoutButton').tooltip('show')
+        $('#logoutButton').tooltip('show');
     },
     
     logPopoutOff: function() {
-        $('#logoutButton').tooltip('hide')
-    }
-    
+        $('#logoutButton').tooltip('hide');
+    } 
 });

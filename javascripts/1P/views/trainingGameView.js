@@ -79,6 +79,7 @@ var trainingGameView = Backbone.View.extend({
         this.selectVariantsContainer = $('#variantsContainer');
         $('#scoreBlock span').text(this.score);
         $('#timerOneGameBlock span').text(this.timerGame);
+        trainingGameLoad(); // animated fade in
 
         /*Make words draggable*/
         $(".takenWord").draggable({

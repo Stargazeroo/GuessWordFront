@@ -2,60 +2,44 @@
 var mainSectionView = Backbone.View.extend({
     el: $('#contentBlock'),
 
-    initialize: function(mainSection){
+    initialize: function(mainSection,currentWindow){
         _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
-        this.render(mainSection);
+        this.render(mainSection,currentWindow);
     },
 
-    render: function(mainSection){
+    render: function(mainSection,currentWindow){
         if (!($.cookie("login"))){
-            window.location.href = loginIndex;
+            var currentWindow = currentWindow || window;
+            currentWindow.location.href = loginIndex;
             return false;
         }
         this.$el.empty();  // delets all elements from 'body' element
         var mainSectionTemplate = new EJS({url:'/javascripts/1P/templates/mainSection.ejs'}).render(mainSection);
         this.$el.append(mainSectionTemplate);
         mainSectionLoad();
+        menuRotate();
     },
 
     events: {
-        "mouseover #mainSection a": "hoverOn",
-        "mouseout #mainSection a" : "hoverOff",
         "click #mainSection a" : "clickFunc",
         "mouseover #mainSection a:nth-child(1)": "skAnim"
     },
 
-    hoverOn: function(e) {
-        var el = e;
-        var color = 'rgb(' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ',' + (Math.floor(Math.random()/3 * 256)) + ')';
-        $(e.currentTarget).addClass('rotate').css("background", color);
-            
-    },
 
-    hoverOff: function(e) {
-        $(e.currentTarget).removeClass('rotate');
-    },
-
-    clickFunc: function(e) {
-        // e.preventDefault();
-        // this.undelegateEvents();
-        //     $('#mainSection a').not(e.currentTarget).addClass('clickAnim').css('background','black');
-        //     $("#mainSection a").bind('animationend mozAnimationEnd webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(){
-        //     window.location.href = $(e.currentTarget).attr('href');
-        //     console.log('1');
-        // });
+    clickFunc: function(e, clickFuncRedirect) {
         e.preventDefault();
         this.undelegateEvents();
-        $('#mainSection a').removeClass('rotate');
-        $(e.currentTarget).addClass('clickAnim').siblings().css('background', "#000000");
-        $(e.currentTarget).on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-            window.location.href = $(e.currentTarget).attr('href');
+        $('#mainSection > a').unbind('mouseenter mouseleave');
+        $("#sk").addClass("skDissapear").fadeOut(1000);
+        $(e.currentTarget).addClass('clickAnim').siblings().addClass('clickAnimSiblings');
+        $(e.currentTarget).on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+            var currentWindow = clickFuncRedirect || window;            
+            currentWindow.location.href = $(e.currentTarget).attr('href');
         });
     },
     //animation
     skAnim: function(){
         $("#sk").addClass("skDissapear").fadeOut(1000);
     }
-
  });
 

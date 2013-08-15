@@ -1,10 +1,10 @@
 // **userExtendedView instance**: Instantiate main app view.
 var userTrainingView = userView.extend({
 
-    initialize: function(userData){
+    initialize: function(userData, currentWindow){
         _.extend(this,userView.prototype.events,this.events);
-        new userView();
-        this.render(userData);
+        new userView(currentWindow);
+        this.render(userData, currentWindow);
         accordion();
     },
     
@@ -12,9 +12,10 @@ var userTrainingView = userView.extend({
         "click #backButt" : "goBack"
     },
 
-    render: function(userData){  
+    render: function(userData, currentWindow){
+        currentWindow = currentWindow || window;
         if (!($.cookie("login"))){
-            window.location.href = loginIndex;
+            currentWindow.location.href = loginIndex;
             return false;
         }  
         this.$("#userTrainingSection").unbind();
@@ -27,10 +28,10 @@ var userTrainingView = userView.extend({
         }
     },
     
-    goBack: function(e) {
+    goBack: function(e, backWindow) {
         e.preventDefault();
-        //Backbone.history.loadUrl(window.history.back());  not working correctly in chrome
-        window.history.back();
+        e.stopPropagation();
+        currentWindow = backWindow || window;
+        currentWindow.history.back();
     }
 });
-

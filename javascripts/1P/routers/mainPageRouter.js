@@ -8,6 +8,7 @@ var mainPageRouter = Backbone.Router.extend({
         "training"    : "training",
         "trainingOn"  : "trainingOn",
         ":button"     : "action",
+
     },
 
     home: function() {
@@ -33,6 +34,7 @@ var mainPageRouter = Backbone.Router.extend({
     trainingOn: function(){
         new trainingGameController();
     }
+
 });
 
 $(window).load(function() {

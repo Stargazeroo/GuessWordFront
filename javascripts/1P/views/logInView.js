@@ -5,12 +5,13 @@ var logInView = Backbone.View.extend({
         "click #regSubmitButton" : "loadRegPage",
         "click #facebookButt" : "facebook"
     },
-    initialize: function(logInFields,logInButtons){
+    initialize: function(logInFields,logInButtons, currentWindow){
         _.bindAll(this, 'render', 'submit',"loadRegPage");
-        this.render(logInFields, logInButtons);
+        this.render(logInFields, logInButtons, currentWindow);
     },
     
-    render: function(logInFields,logInButtons){
+    render: function(logInFields,logInButtons, currentWindow){
+        currentWindow = currentWindow || window;
         window.fbAsyncInit = function() {
             FB.init({
                 appId: '531893653536303',
@@ -29,16 +30,16 @@ var logInView = Backbone.View.extend({
                 fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         if ($.cookie("login")){
-            window.location.href = mainIndex;
-        }else{
-            this.$el.empty();
-            var fields = new EJS({url:'/javascripts/1P/templates/fieldsLogin.ejs'}).render(logInFields);
-            this.$el.append(fields);
-            var buttons = new EJS({url:'/javascripts/1P/templates/buttonsLogin.ejs'}).render(logInButtons);
-            this.$("#logInForm").append(buttons);
-            loginPageLoad();
-            $('body').append('<div id="fb-root"></div>');
+            currentWindow.location.href = mainIndex;
+            return false;
         }
+        this.$el.empty();
+        var fields = new EJS({url:'/javascripts/1P/templates/fieldsLogin.ejs'}).render(logInFields);
+        this.$el.append(fields);
+        var buttons = new EJS({url:'/javascripts/1P/templates/buttonsLogin.ejs'}).render(logInButtons);
+        this.$("#logInForm").append(buttons);
+        loginPageLoad();
+        $('body').append('<div id="fb-root"></div>');
     },
 
     facebook: function(e){
@@ -111,9 +112,10 @@ var logInView = Backbone.View.extend({
         $('#login,#pass').val('');
     },
 
-    loadRegPage: function(e){        
+    loadRegPage: function(e, regWindow){        
         e.preventDefault();
-        window.location.href = registrationIndex;
-    }
-    
+        e.stopPropagation();
+        currentWindow = regWindow || window;
+        currentWindow.location.href = registrationIndex;
+    } 
 });

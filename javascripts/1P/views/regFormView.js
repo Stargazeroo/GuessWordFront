@@ -44,7 +44,6 @@ var registrationView = Backbone.View.extend({
             },
             error: function(error){
                 regResultModelObject.set("errors", JSON.parse(error.responseText));
-                console.log(regResultModelObject.attributes);
                 var errorPopup = new EJS({url:'/javascripts/1P/templates/popupRegistrationResult.ejs'}).render(regResultModelObject);
                 $('#contentBlock').append(errorPopup);
                 $('#regResult').show();
@@ -69,12 +68,10 @@ var registrationView = Backbone.View.extend({
             var login = $(this).val();
             if (!_isValidLogin(login)){
                 $(this).siblings("i.icon-remove").css('display','inline-block').siblings("i.icon-ok").css('display','none');
-                //console.log('ololo');
                 stopLogin = 1;
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
                 stopLogin = 0;
-                //console.log('ololo1');
             }
             _isStop(stopPass,stopLogin,stopMail)
         })
@@ -85,10 +82,8 @@ var registrationView = Backbone.View.extend({
             if (!($(this).val() === $("#pass").val())){
                 $(this).siblings("i.icon-remove").css('display','inline-block').siblings("i.icon-ok").css('display','none');
                 stopPass = 1;
-                //console.log('valid');
             } else {
                 $(this).siblings("i.icon-ok").css('display','inline-block').siblings("i.icon-remove").css('display','none');
-                //console.log('invalid');
                 stopPass = 0;
             }
             _isStop(stopPass,stopLogin,stopMail)
@@ -99,10 +94,12 @@ var registrationView = Backbone.View.extend({
         $(e.target).parent().parent().hide();
     },
 
-    popupSuccessClose: function(e){
+    popupSuccessClose: function(e,popupSuccessCloseRedirect){
         e.preventDefault();
+        e.stopPropagation();
+        var popupSuccessCloseRedirect = popupSuccessCloseRedirect || window
         $(e.target).parent().parent().hide();
-        window.location.href = loginIndex;
+        popupSuccessCloseRedirect.location.href = loginIndex;
     }
 });
 

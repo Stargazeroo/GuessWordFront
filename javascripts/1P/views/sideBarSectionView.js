@@ -3,25 +3,8 @@ var sideBarSectionView = Backbone.View.extend({
     el: $('#language'),
 
     initialize: function(sideBarSection){
-        _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
+        _.bindAll(this, 'render', 'changeLan'); // fixes loss of context for 'this' within methods
         this.render(sideBarSection);
-    },
-
-    events: {
-        "click #sideBarSection": "changeLan",
-    },
-
-    changeLan: function(event) {
-        var language_id = event.target.id; // id of the clicked button indicating the language
-        jQuery.i18n.properties({
-            name:'app',
-            path:'/javascripts/1P/localization/',
-            mode:'map',
-            language: language_id,
-        });
-        console.log("Language changed to "+language_id);
-        this.start();
-        localStorage.setItem('language', JSON.stringify(language_id));
     },
 
     render: function(sideBarSection){
@@ -32,15 +15,31 @@ var sideBarSectionView = Backbone.View.extend({
         }
     },
 
+    events: {
+        "click #sideBarSection input": "changeLan",
+    },
+
+    changeLan: function(event) {
+        var language_id = event.target.id; // id of the clicked button indicating the language
+        jQuery.i18n.properties({
+            name:'app',
+            path:'/javascripts/1P/localization/',
+            mode:'map',
+            language: language_id
+        });
+        this.start();
+        localStorage.setItem('language', JSON.stringify(language_id));
+    },
+
     close: function () {
         this.$el.empty();
         this.$el.unbind();
     },
 
-    start: function() {
+    start: function(customBackbone) {
+        var currentBackbone = customBackbone || Backbone;
         this.close(); //closes a zombie view
-        Backbone.history.loadUrl(Backbone.history.getFragment())
+        currentBackbone.history.loadUrl(currentBackbone.history.getFragment());
     }
 
 });
-
